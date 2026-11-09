@@ -1,0 +1,270 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="it" xml:lang="it">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>MiVago - Travel Log &amp; Itinerary Hub</title>
+    
+    <meta name="description" content="Piattaforma community-driven per condividere itinerari di viaggio strutturati, tappe, alloggi e consigli pratici." />
+    <meta name="keywords" content="MiVago, itinerari viaggio, tappe, diari di viaggio, consigli pratici, alloggi, Giappone" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <link rel="stylesheet" type="text/css" href="mobile.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="print.css" media="print" />
+    
+    <link rel="icon" type="image/png" href="materiale/images/mivago-icon.png" />
+</head>
+<body>
+
+    <!-- Link di salto per Screen Reader (Accessibilità WCAG) -->
+    <div class="skip-links">
+        <a href="#main-content">Salta al contenuto principale</a>
+        <a href="#menu-lista">Salta alla navigazione</a>
+    </div>
+
+    <!-- Header Principale -->
+    <div id="header-wrapper">
+        <header>
+            <div class="header-top">
+                <div id="brand">
+                    <a href="index.html" id="logo-link">
+                        <span id="logo-title">MiVago</span>
+                        <span id="slogan"><span lang="en">Travel Log &amp; Itinerary Hub</span></span>
+                    </a>
+                </div>
+                <div class="header-auth">
+                    <a href="login.php" class="btn-login"><span lang="en">Login</span></a>
+                </div>
+            </div>
+            
+            <nav id="menu" aria-label="Navigazione principale">
+                <details>
+                    <summary id="bottoneMenu">Menu</summary>
+                    <ul id="menu-lista">
+                        <li id="currentLink"><span>Home</span></li>
+                        <li><a href="itinerari.php">Esplora Itinerari</a></li>
+                        <li><a href="nuovoViaggio.php">Condividi Viaggio</a></li>
+                        <li><a href="areaPersonale.php">I Miei Viaggi</a></li>
+                    </ul>
+                </details>
+            </nav>
+        </header>
+    </div>
+
+    <!-- Contenitore Layout Principale -->
+    <div id="container">
+
+        <!-- Sidebar / Profilo Utente -->
+        <aside id="sidebar-utente" aria-labelledby="titolo-profilo">
+            <h2 id="titolo-profilo" class="sr-only">Profilo Utente e Statistiche</h2>
+            
+            <div class="user-card">
+                <div class="user-header">
+                    <div class="avatar-placeholder">GV</div>
+                    <div class="user-info">
+                        <h3>Marco Rossi</h3>
+                        <p class="user-role">Explorer <span class="badge-verified" title="Account Verificato">&#10004;</span></p>
+                    </div>
+                </div>
+                
+                <div class="user-stats">
+                    <div class="stat-box">
+                        <span class="stat-number">12</span>
+                        <span class="stat-label">Itinerari</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-number">45</span>
+                        <span class="stat-label">Tappe</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-number">8</span>
+                        <span class="stat-label">Paesi</span>
+                    </div>
+                </div>
+
+                <div class="user-cta">
+                    <a href="nuovoViaggio.php" class="btn-primary">+ Carica nuovo viaggio</a>
+                </div>
+            </div>
+
+            <!-- Widget Ultimi Itinerari -->
+            <div class="widget-news">
+                <h3>Ultimi diari pubblicati</h3>
+                <dl>
+                    <dt><time datetime="2026-11-02">02/11/2026</time></dt>
+                    <dd>
+                        <a href="itinerari.php?id=102">Giappone tra tradizione e futuro</a>
+                        <span class="badge-verificato"><abbr title="Verificato dall'Amministrazione">Verificato</abbr></span>
+                    </dd>
+                    
+                    <dt><time datetime="2026-10-28">28/10/2026</time></dt>
+                    <dd>
+                        <a href="itinerari.php?id=101">Weekend romantico a Parigi</a>
+                        <span class="badge-verificato"><abbr title="Verificato dall'Amministrazione">Verificato</abbr></span>
+                    </dd>
+
+                    <dt><time datetime="2026-10-15">15/10/2026</time></dt>
+                    <dd>
+                        <a href="itinerari.php?id=99"><span lang="en">Interrail</span> nei Balcani</a>
+                        <span class="badge-attesa"><abbr title="In attesa di verifica editoriale">In attesa</abbr></span>
+                    </dd>
+                </dl>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main id="main-content" tabindex="-1">
+            
+            <section id="hero-intro">
+                <h1>Benvenuti su MiVago</h1>
+                <p><strong>MiVago</strong> (<span lang="en">Travel Log &amp; Itinerary Hub</span>) &egrave; la piattaforma <span lang="en">community-driven</span> dove i viaggiatori tracciano, condividono e consultano itinerari di viaggio reali suddivisi in tappe geografiche e completi di costi, alloggi e consigli pratici verificati.</p>
+            </section>
+
+            <!-- Card Itinerario Feed Stile Strava Activity Card -->
+            <article class="activity-card">
+                
+                <div class="activity-header">
+                    <div class="author-badge">
+                        <div class="author-avatar">AA</div>
+                        <div class="author-details">
+                            <p class="author-name">Alessandro A.</p>
+                            <p class="activity-date">Pubblicato il <time datetime="2026-11-02">02/11/2026</time></p>
+                        </div>
+                    </div>
+                    <div class="activity-status">
+                        <span class="badge-verificato"><abbr title="Revisionato dal team editoriale">Verificato</abbr></span>
+                    </div>
+                </div>
+
+                <div class="activity-title-block">
+                    <h2><a href="itinerari.php?id=102">Giappone tra tradizione e futuro: da Tokyo a Osaka</a></h2>
+                    <p class="activity-location"><span lang="ja">Asia</span> &mdash; Giappone</p>
+                </div>
+
+                <div class="activity-metrics">
+                    <div class="metric">
+                        <span class="metric-value">14 <abbr title="giorni">gg</abbr></span>
+                        <span class="metric-label">Durata</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">2400 &euro;</span>
+                        <span class="metric-label">Budget / pers.</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value"><span lang="en">Medium</span></span>
+                        <span class="metric-label">Fascia di spesa</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">Zaino in spalla</span>
+                        <span class="metric-label">Stile viaggio</span>
+                    </div>
+                </div>
+
+                <div class="activity-summary">
+                    <p><strong>Sintesi del Viaggio (Debrief):</strong> Un itinerario di due settimane ottimizzato per evitare sprechi di tempo e registrazioni ridondanti. Suddiviso in 3 macro-tappe strategiche per coprire il territorio nazionale senza violare la Terza Forma Normale (<abbr title="Terza Forma Normale">3NF</abbr>) del <span lang="en">database</span>.</p>
+                </div>
+
+                <div class="tappe-feed">
+                    <h3>Tappe e Segmenti dell'Itinerario</h3>
+
+                    <div class="tappa-card">
+                        <div class="tappa-header">
+                            <h4>Tappa 1 &mdash; <span lang="ja">Tokyo</span></h4>
+                            <span class="tappa-days">Giorni 1&ndash;5</span>
+                        </div>
+                        <div class="tappa-body">
+                            <div class="stay-info">
+                                <p><strong>Alloggio:</strong> <span lang="en">Sakura Hostel Asakusa</span></p>
+                                <p><strong>Valutazione:</strong> <span class="rating">4 / 5</span> | <strong>Costo medio:</strong> 45 &euro;/notte</p>
+                            </div>
+                            <div class="tappa-text">
+                                <p><strong>Escursioni e Diario:</strong> Esplorazione intensiva dei quartieri di <span lang="ja">Shibuya</span> e <span lang="ja">Asakusa</span>, con escursione giornaliera a <span lang="ja">Nikko</span>.</p>
+                                <div class="pro-tip">
+                                    <p><strong>Consiglio Pratico:</strong> Attivare l'abbonamento dei treni in stazione all'arrivo; al tempio <span lang="ja">Senso-ji</span> andare rigorosamente prima delle 8:00 per evitare le scolaresche.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tappa-card">
+                        <div class="tappa-header">
+                            <h4>Tappa 2 &mdash; <span lang="ja">Kyoto</span> e <span lang="ja">Nara</span></h4>
+                            <span class="tappa-days">Giorni 6&ndash;10</span>
+                        </div>
+                        <div class="tappa-body">
+                            <div class="stay-info">
+                                <p><strong>Alloggio:</strong> <span lang="ja">Ryokan Gion</span></p>
+                                <p><strong>Valutazione:</strong> <span class="rating">5 / 5</span> | <strong>Costo medio:</strong> 90 &euro;/notte</p>
+                            </div>
+                            <div class="tappa-text">
+                                <p><strong>Escursioni e Diario:</strong> Visita al santuario <span lang="ja">Fushimi Inari</span> all'alba e gita in giornata tra i cervi di <span lang="ja">Nara</span>.</p>
+                                <div class="pro-tip">
+                                    <p><strong>Consiglio Pratico:</strong> Per lo <span lang="ja">Shinkansen</span> da Tokyo a Kyoto prenotate il posto sul lato del Monte Fuji (<span lang="en">Seat E</span>) con almeno 3 giorni di anticipo.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tappa-card">
+                        <div class="tappa-header">
+                            <h4>Tappa 3 &mdash; <span lang="ja">Osaka</span> e <span lang="ja">Hiroshima</span></h4>
+                            <span class="tappa-days">Giorni 11&ndash;14</span>
+                        </div>
+                        <div class="tappa-body">
+                            <div class="stay-info">
+                                <p><strong>Alloggio:</strong> <span lang="en">Business Hotel Namba</span></p>
+                                <p><strong>Valutazione:</strong> <span class="rating">4 / 5</span> | <strong>Costo medio:</strong> 60 &euro;/notte</p>
+                            </div>
+                            <div class="tappa-text">
+                                <p><strong>Escursioni e Diario:</strong> Visita al castello di Osaka e gita in giornata a Hiroshima ed isola di <span lang="ja">Miyajima</span>.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="activity-footer">
+                    <p class="community-note">Itinerario approvato dal team di moderazione di MiVago per accuratezza logistica.</p>
+                </div>
+            </article>
+
+            <section id="profili-utenza">
+                <h2>Profilazione della Community</h2>
+                <p>La nostra piattaforma &egrave; progettata attorno a tre categorie principali di viaggiatori:</p>
+                <div class="profiles-grid">
+                    <div class="profile-card">
+                        <h3>1. Viaggiatore Indipendente</h3>
+                        <p><span lang="en">Low-Budget</span> / Zaino in spalla. Focalizzato sui filtri costo e consigli logistici per i trasporti pubblici e ostelli.</p>
+                    </div>
+                    <div class="profile-card">
+                        <h3>2. Gruppo o Famiglia</h3>
+                        <p>Pianificazione sicura per 3+ persone. Priorit&agrave; alle valutazioni degli alloggi e alla chiarezza delle tappe.</p>
+                    </div>
+                    <div class="profile-card">
+                        <h3>3. Turista Culturale / Coppia</h3>
+                        <p>Soggiorni brevi o tematici. Cerca ispirazione visiva dagli itinerari con badge <span class="badge-verificato">Verificato</span>.</p>
+                    </div>
+                </div>
+            </section>
+
+            <blockquote>
+                <p lang="en">&ldquo;Travel is fatal to prejudice, bigotry, and narrow-mindedness.&rdquo;</p>
+                <p>(Il viaggio &egrave; fatale per il pregiudizio, il bigottismo e la chiusura mentale.)</p>
+                <p><cite>Mark Twain</cite></p>
+            </blockquote>
+
+        </main>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <img class="imgValidCode" src="materiale/images/valid-html5.png" alt="HTML5 Valido e conforme XML" />
+            <div class="footer-text">
+                <p>Laboratorio di Tecnologie Web 2026 &mdash; Universit&agrave; degli Studi di Padova</p> 
+                <p>Progetto MiVago (Travel Log &amp; Itinerary Hub) &mdash; Tutti i diritti riservati.</p>
+            </div>
+            <img class="imgValidCode" src="materiale/images/vcss-blue.png" alt="CSS Valido secondo specifiche W3C" />
+        </div>
+    </footer>
+
+</body>
+</html>
