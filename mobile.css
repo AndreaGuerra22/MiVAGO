@@ -9,22 +9,22 @@
 }
 
 :root {
-	--strava-orange: #fc4c02;
-	--strava-orange-hover: #e04300;
-	--bgcolor-body: #064e3b; /* Verde scuro */
-	--surface-card: #fbd3b9; /* Arancio pesca scuro */
-	--header-bg: #1e293b;
-	--header-txt: #ffffff;
-	--txt-primary: #1e293b; /* Blu molto scuro per testi su sfondi chiari */
-	--txt-secondary: #475569;
-	--txt-muted: #64748b;
-	--txt-light: #f8fafc; /* Testo chiaro per gli sfondi scuri */
-	--line-color: #e2e8f0;
+	--strava-orange: #FCF7F8;
+	--strava-orange-hover: #7D1019;
+	--bgcolor-body: #4E8098;
+	--surface-card: #CAE1DF;
+	--header-bg: #A31621;
+	--header-txt: #FCF7F8;
+	--txt-primary: #1E293B;
+	--txt-secondary: #334155;
+	--txt-muted: #475569;
+	--txt-light: #1E293B;
+	--line-color: #90C2E7;
 	--badge-verificato-bg: #dcfce7;
 	--badge-verificato-txt: #15803d;
 	--badge-attesa-bg: #fef3c7;
 	--badge-attesa-txt: #b45309;
-	--focus-ring-color: #f59e0b;
+	--focus-ring-color: #90C2E7;
 	--radius-sm: 6px;
 	--radius-md: 12px;
 	--radius-lg: 16px;
@@ -47,7 +47,7 @@
 	top: -999px;
 	left: 1em;
 	background: var(--strava-orange);
-	color: #ffffff;
+	color: var(--txt-light);
 	padding: 0.8em 1.2em;
 	z-index: 1000;
 	font-weight: bold;
@@ -128,7 +128,7 @@ header {
 	display: block;
 	font-size: 0.85em;
 	letter-spacing: 0.15em;
-	color: #94a3b8;
+	color: var(--surface-card);
 	margin-top: 0.3em;
 	text-align: center;
 }
@@ -137,7 +137,7 @@ header {
 	display: block;
 	font-size: 0.75em;
 	letter-spacing: 0.15em;
-	color: #94a3b8;
+	color: var(--surface-card);
 	text-transform: uppercase;
 	margin-top: 0.3em;
 	text-align: center;
@@ -152,7 +152,7 @@ header {
 .btn-login {
 	background-color: transparent;
 	border: 2px solid var(--strava-orange);
-	color: #ffffff;
+	color: var(--strava-orange);
 	padding: 0.4em 1em;
 	border-radius: var(--radius-sm);
 	text-decoration: none;
@@ -161,7 +161,7 @@ header {
 }
 
 .btn-login:hover {
-	background-color: var(--strava-orange-hover);
+	background-color: var(--txt-primary);
 }
 
 #barraPercorso {
@@ -188,7 +188,7 @@ header {
 	display: block;
 	padding: 0.8em 1em;
 	background-color: var(--strava-orange);
-	color: #ffffff;
+	color: var(--txt-light);
 	font-weight: bold;
 	cursor: pointer;
 	text-align: center;
@@ -227,12 +227,12 @@ header {
 	display: block;
 	padding: 0.7em 1.2em;
 	text-decoration: none;
-	color: #ffffff;
+	color: var(--txt-light);
 	font-size: 0.95em;
 }
 
 #menu a:hover {
-	background-color: rgba(255, 255, 255, 0.1);
+	background-color: var(--strava-orange);
 }
 
 #menu #currentLink {
@@ -268,7 +268,7 @@ header {
 	height: 48px;
 	border-radius: 50%;
 	background-color: var(--strava-orange);
-	color: #ffffff;
+	color: var(--txt-light);
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -303,7 +303,7 @@ header {
 	display: block;
 	font-size: 1.3em;
 	font-weight: 800;
-	color: var(--strava-orange);
+	color: var(--txt-light);
 }
 
 .stat-label {
@@ -316,7 +316,7 @@ header {
 	display: block;
 	text-align: center;
 	background-color: var(--strava-orange);
-	color: #ffffff !important;
+	color: var(--txt-light) !important;
 	text-decoration: none;
 	font-weight: bold;
 	padding: 0.7em 1em;
@@ -326,6 +326,7 @@ header {
 
 .btn-primary:hover {
 	background-color: var(--strava-orange-hover);
+	color: var(--strava-orange)!important;
 }
 
 .widget-news h3 {
@@ -396,7 +397,7 @@ header {
 	width: 38px;
 	height: 38px;
 	background-color: #334155;
-	color: #ffffff;
+	color: var(--surface-card);
 	border-radius: 50%;
 	display: flex;
 	align-items: center;
@@ -441,10 +442,10 @@ header {
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
 	gap: 0.8em;
-	background-color: rgba(255, 255, 255, 0.5);
+	background-color: var(--strava-orange);
 	padding: 1em;
 	border-radius: var(--radius-md);
-	border: 1px solid rgba(255, 255, 255, 0.8);
+	border: 1px solid var(--strava-orange);
 	margin-bottom: 1.2em;
 }
 
@@ -508,7 +509,7 @@ header {
 .stay-info {
 	font-size: 0.85em;
 	color: var(--txt-primary);
-	background-color: rgba(255, 255, 255, 0.6);
+	background-color: var(--focus-ring-color);
 	padding: 0.5em 0.8em;
 	border-radius: var(--radius-sm);
 	margin-bottom: 0.5em;
@@ -553,11 +554,11 @@ header {
 #profili-utenza h2 {
 	font-size: 1.4em;
 	margin-bottom: 0.6em;
-	color: var(--txt-light);
+	color: var(--strava-orange);
 }
 
 #profili-utenza > p {
-	color: var(--txt-light);
+	color: var(--strava-orange);
 	margin-bottom: 1em;
 }
 
@@ -611,10 +612,10 @@ blockquote cite {
 
 footer {
 	background-color: var(--header-bg);
-	color: #94a3b8;
+	color: var(--strava-orange);
 	padding: 1.5em 1em;
 	margin-top: auto;
-	border-top: 1px solid #334155;
+	border-top: 1px solid var(--txt-muted);
 }
 
 .footer-content {
@@ -664,7 +665,7 @@ footer {
 	}
 
 	#menu a:hover {
-		background-color: var(--bgcolor-body);
+		background-color: var(--focus-ring-color);
 		border-color: var(--strava-orange-hover);
 	}
 
