@@ -15,12 +15,6 @@
 </head>
 <body>
 
-    <!-- Link di salto per Screen Reader -->
-    <div class="skip-links">
-        <a href="#main-content">Salta al contenuto principale</a>
-        <a href="#menu-lista">Salta alla navigazione</a>
-    </div>
-
     <!-- Header principale -->
     <div id="header-wrapper">
         <header>
@@ -38,15 +32,14 @@
             </div>
             
             <nav id="menu" aria-label="Navigazione principale">
-                <details>
-                    <summary id="bottoneMenu">Menu</summary>
-                    <ul id="menu-lista">
-                        <li id="currentLink"><span>Home</span></li>
-                        <li><a href="itinerari.php">Esplora Itinerari</a></li>
-                        <li><a href="nuovoViaggio.php">Condividi Viaggio</a></li>
-                        <li><a href="areaPersonale.php">I Miei Viaggi</a></li>
-                    </ul>
-                </details>
+                <input type="checkbox" id="menu-toggle" class="sr-only" />
+                <label for="menu-toggle" id="bottoneMenu">Menu</label>
+                <ul id="menu-lista">
+                    <li id="currentLink"><span>Home</span></li>
+                    <li><a href="itinerari.php">Esplora Itinerari</a></li>
+                    <li><a href="nuovoViaggio.php">Condividi Viaggio</a></li>
+                    <li><a href="areaPersonale.php">I Miei Viaggi</a></li>
+                </ul>
             </nav>
         </header>
     </div>

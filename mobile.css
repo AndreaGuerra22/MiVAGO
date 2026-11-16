@@ -161,7 +161,7 @@ header {
 }
 
 .btn-login:hover {
-	background-color: var(--strava-orange);
+	background-color: var(--strava-orange-hover);
 }
 
 #barraPercorso {
@@ -184,15 +184,8 @@ header {
 }
 
 /* MENU A TENDINA MOBILE (DETAILS / SUMMARY) */
-#menu details {
-	background-color: #0f172a;
-	border: 1px solid rgba(255, 255, 255, 0.15);
-	border-radius: var(--radius-sm);
-	overflow: hidden;
-}
-
-#menu summary {
-	list-style: none;
+#bottoneMenu {
+	display: block;
 	padding: 0.8em 1em;
 	background-color: var(--strava-orange);
 	color: #ffffff;
@@ -202,13 +195,24 @@ header {
 	border-radius: var(--radius-sm);
 }
 
-#menu summary::-webkit-details-marker {
-	display: none;
+/* Focus visibile quando si naviga con il tasto TAB */
+#menu-toggle:focus + #bottoneMenu {
+	outline: 3px solid var(--focus-ring-color);
+	outline-offset: 2px;
 }
 
-#menu ul {
+#menu-lista {
+	display: none;
 	list-style: none;
 	padding: 0.5em 0;
+	margin-top: 0.5em;
+	background-color: #0f172a;
+	border: 1px solid rgba(255, 255, 255, 0.15);
+	border-radius: var(--radius-sm);
+}
+
+#menu-toggle:checked ~ #menu-lista {
+	display: block;
 }
 
 #menu li {
@@ -232,7 +236,7 @@ header {
 }
 
 #menu #currentLink {
-	background-color: rgba(252, 76, 2, 0.3);
+	background-color: var(--bgco);
 	font-weight: bold;
 }
 
@@ -423,7 +427,7 @@ header {
 }
 
 .activity-title-block a:hover {
-	color: var(--strava-orange);
+	color: var(--strava-orange-hover);
 }
 
 .activity-location {
@@ -633,21 +637,18 @@ footer {
 		font-size: 3.8em;
 	}
 
-	#menu details {
-		border: none;
-		background: none;
-		overflow: visible;
-	}
-
-	#menu summary {
+	#bottoneMenu {
 		display: none;
 	}
 
-	#menu ul {
+	#menu #menu-lista {
 		display: flex;
 		justify-content: center;
 		gap: 1em;
 		padding: 0;
+		margin-top: 0;
+		background: none;
+		border: none;
 	}
 
 	#menu li {
@@ -657,14 +658,14 @@ footer {
 	#menu a, #menu #currentLink span {
 		border-radius: var(--radius-sm);
 		padding: 0.6em 1.2em;
-		background-color: #0f172a;
-		border: 1px solid rgba(255, 255, 255, 0.1);
+		background-color: var(--strava-orange);
+		border: 1px solid var(--bgcolor-body);
 		white-space: nowrap;
 	}
 
 	#menu a:hover {
-		background-color: var(--strava-orange);
-		border-color: var(--strava-orange);
+		background-color: var(--bgcolor-body);
+		border-color: var(--strava-orange-hover);
 	}
 
 	#menu #currentLink {
