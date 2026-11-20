@@ -1,0 +1,67 @@
+/* ==========================================================================
+   MiVAGO - Foglio di Stile per la Stampa (print.css)
+   ========================================================================== */
+
+@media print {
+	* {
+		background: transparent !important;
+		color: #000000 !important;
+		box-shadow: none !important;
+		text-shadow: none !important;
+	}
+
+	body {
+		font-size: 12pt;
+		font-family: Georgia, "Times New Roman", serif;
+		line-height: 1.45;
+	}
+
+	#menu, #bottoneMenu, .skip-links, footer img, .nav-auth, .hero-actions, .category-jump, .back-to-top-wrapper {
+		display: none !important;
+	}
+
+	#header-wrapper {
+		border-bottom: 2pt solid #000000;
+		margin-bottom: 0.8cm;
+		padding-bottom: 0.4cm;
+	}
+
+	#logo-title {
+		font-size: 22pt;
+		font-weight: bold;
+	}
+
+	#container {
+		width: 100%;
+		margin: 0;
+		padding: 0;
+	}
+
+	.trip-card, #hero-intro, .profile-card, blockquote {
+		border: 1pt solid #000000;
+		page-break-inside: avoid;
+		padding: 0.5cm;
+		margin-bottom: 0.7cm;
+	}
+
+	.trips-grid, .profiles-grid {
+		display: block;
+	}
+
+	.trip-specs {
+		display: flex;
+		justify-content: space-between;
+		border: 1pt solid #000000;
+		padding: 0.3cm;
+		margin: 0.3cm 0;
+	}
+
+	a[href]:after {
+		content: " (" attr(href) ")";
+		font-size: 90%;
+	}
+
+	abbr[title]:after {
+		content: " (" attr(title) ")";
+	}
+}

@@ -9,22 +9,19 @@
 }
 
 :root {
-	--strava-orange: #FCF7F8;
-	--strava-orange-hover: #7D1019;
-	--bgcolor-body: #4E8098;
-	--surface-card: #CAE1DF;
-	--header-bg: #A31621;
-	--header-txt: #FCF7F8;
-	--txt-primary: #1E293B;
-	--txt-secondary: #334155;
-	--txt-muted: #475569;
-	--txt-light: #1E293B;
-	--line-color: #90C2E7;
+	--color-crimson: #A31621;
+	--color-crimson-dark: #7A1018;
+	--color-snow: #FCF7F8;
+	--color-mint: #CAE1DF;
+	--color-steelblue: #4E8098;
+	--color-steelblue-dark: #254759;
+	--color-skyblue: #90C2E7;
+	--color-ink: #18222F;
+	--color-ink-muted: #334155;
 	--badge-verificato-bg: #dcfce7;
-	--badge-verificato-txt: #15803d;
+	--badge-verificato-txt: #136c34;
 	--badge-attesa-bg: #fef3c7;
-	--badge-attesa-txt: #b45309;
-	--focus-ring-color: #90C2E7;
+	--badge-attesa-txt: #92400e;
 	--radius-sm: 6px;
 	--radius-md: 12px;
 	--radius-lg: 16px;
@@ -46,25 +43,32 @@
 	position: absolute;
 	top: -999px;
 	left: 1em;
-	background: var(--strava-orange);
-	color: var(--txt-light);
+	background-color: var(--color-crimson);
+	color: var(--color-snow);
 	padding: 0.8em 1.2em;
 	z-index: 1000;
 	font-weight: bold;
 	text-decoration: none;
 	border-radius: var(--radius-sm);
+	border: 2px solid var(--color-snow);
+	min-height: 44px;
+	display: inline-flex;
+	align-items: center;
 }
+
 .skip-links a:focus {
 	top: 1em;
-	outline: 3px solid var(--focus-ring-color);
+	outline: 3px solid var(--color-skyblue);
+	outline-offset: 2px;
 }
 
 html {
-	background-color: var(--bgcolor-body);
-	color: var(--txt-primary);
-	font-family: "Lexend", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+	background-color: var(--color-snow);
+	color: var(--color-ink);
+	font-family: "Lexend", Verdana, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
 	font-size: 100%;
 	line-height: 1.5;
+	text-align: left;
 }
 
 body {
@@ -73,150 +77,109 @@ body {
 	min-height: 100vh;
 }
 
+/* Focus visibile e ad alto contrasto (WCAG 2.2) */
 a:focus, button:focus, input:focus, select:focus, textarea:focus {
-	outline: 3px solid var(--focus-ring-color) !important;
-	outline-offset: 2px !important;
+	outline: 3px solid var(--color-ink);
+	outline-offset: 2px;
 }
 
-/* HEADER & BRAND CENTRATO + LOGIN IN ALTO A DESTRA */
+#header-wrapper a:focus, footer a:focus {
+	outline: 3px solid var(--color-skyblue);
+	outline-offset: 2px;
+}
+
+#barraPercorso a:focus {
+	outline: 3px solid var(--color-crimson);
+	outline-offset: 2px;
+}
+
+/* ==========================================================================
+   HEADER & TOP NAV-BAR
+   ========================================================================== */
 #header-wrapper {
-	background-color: var(--header-bg);
-	color: var(--header-txt);
-	padding: 1.5em 1em;
-	border-bottom: 3px solid var(--strava-orange);
+	background-color: var(--color-crimson);
+	color: var(--color-snow);
+	border-bottom: 4px solid var(--color-steelblue);
 }
 
-header {
-	display: flex;
-	flex-direction: column;
-	gap: 1em;
-	position: relative;
+.navbar-container {
 	max-width: 1200px;
 	margin: 0 auto;
-}
-
-.header-top {
+	padding: 0.8em 1em;
 	display: flex;
-	justify-content: center;
+	flex-wrap: wrap;
+	justify-content: space-between;
 	align-items: center;
-	position: relative;
-	width: 100%;
-}
-
-#brand {
-	text-align: center;
-	width: 100%;
+	gap: 0.8em;
 }
 
 #brand #logo-link {
 	text-decoration: none;
-	color: var(--header-txt);
-	display: inline-block;
+	color: var(--color-snow);
+	display: flex;
+	flex-direction: column;
+	min-height: 44px;
+	justify-content: center;
 }
 
 #logo-title {
-	font-size: 3em;
+	font-size: 2em;
 	font-weight: 800;
 	letter-spacing: -0.03em;
-	color: var(--strava-orange);
-	text-transform: none;
-	display: block;
-	text-align: center;
+	color: var(--color-snow);
+	line-height: 1.1;
 }
 
 #slogan-ven {
-	display: block;
-	font-size: 0.85em;
-	letter-spacing: 0.15em;
-	color: var(--surface-card);
-	margin-top: 0.3em;
-	text-align: center;
+	font-size: 0.8em;
+	letter-spacing: 0.06em;
+	color: var(--color-mint);
+	margin-top: 0.15em;
 }
 
-#slogan {
-	display: block;
-	font-size: 0.75em;
-	letter-spacing: 0.15em;
-	color: var(--surface-card);
-	text-transform: uppercase;
-	margin-top: 0.3em;
-	text-align: center;
+/* Navigazione Mobile (Checkbox + Label) */
+#menu {
+	display: contents;
 }
 
-.header-auth {
-	position: absolute;
-	top: 0;
-	right: 0;
-}
-
-.btn-login {
-	background-color: transparent;
-	border: 2px solid var(--strava-orange);
-	color: var(--strava-orange);
-	padding: 0.4em 1em;
-	border-radius: var(--radius-sm);
-	text-decoration: none;
-	font-weight: bold;
-	font-size: 0.85em;
-}
-
-.btn-login:hover {
-	background-color: var(--txt-primary);
-}
-
-#barraPercorso {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	background-color: rgba(255, 255, 255, 0.05);
-	padding: 0.5em 0.8em;
-	border-radius: var(--radius-sm);
-}
-
-#breadcrumb p {
-	font-size: 0.85em;
-	color: #cbd5e1;
-}
-
-#breadcrumb a {
-	color: #ffffff;
-	text-decoration: underline;
-}
-
-/* MENU A TENDINA MOBILE (DETAILS / SUMMARY) */
 #bottoneMenu {
-	display: block;
-	padding: 0.8em 1em;
-	background-color: var(--strava-orange);
-	color: var(--txt-light);
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 44px;
+	min-width: 44px;
+	padding: 0.55em 1.1em;
+	background-color: var(--color-snow);
+	color: var(--color-crimson);
 	font-weight: bold;
 	cursor: pointer;
-	text-align: center;
 	border-radius: var(--radius-sm);
+	border: 2px solid var(--color-snow);
+	font-size: 0.95em;
 }
 
-/* Focus visibile quando si naviga con il tasto TAB */
 #menu-toggle:focus + #bottoneMenu {
-	outline: 3px solid var(--focus-ring-color);
+	outline: 3px solid var(--color-skyblue);
 	outline-offset: 2px;
 }
 
 #menu-lista {
 	display: none;
+	width: 100%;
 	list-style: none;
-	padding: 0.5em 0;
-	margin-top: 0.5em;
-	background-color: #0f172a;
-	border: 1px solid rgba(255, 255, 255, 0.15);
+	background-color: var(--color-crimson-dark);
+	border: 1px solid var(--color-skyblue);
 	border-radius: var(--radius-sm);
+	overflow: hidden;
 }
 
 #menu-toggle:checked ~ #menu-lista {
-	display: block;
+	display: flex;
+	flex-direction: column;
 }
 
 #menu li {
-	border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+	border-bottom: 1px solid rgba(252, 247, 248, 0.15);
 }
 
 #menu li:last-child {
@@ -224,398 +187,442 @@ header {
 }
 
 #menu a, #menu #currentLink span {
-	display: block;
-	padding: 0.7em 1.2em;
+	display: flex;
+	align-items: center;
+	min-height: 44px;
+	padding: 0.65em 1.1em;
 	text-decoration: none;
-	color: var(--txt-light);
+	color: var(--color-snow);
 	font-size: 0.95em;
+	font-weight: 600;
 }
 
 #menu a:hover {
-	background-color: var(--strava-orange);
+	background-color: var(--color-steelblue-dark);
 }
 
-#menu #currentLink {
-	background-color: var(--bgco);
-	font-weight: bold;
-}
-
-/* CONTAINER PRINCIPALE */
-#container {
-	padding: 1em 0.8em;
-	display: flex;
-	flex-direction: column;
-	gap: 1.5em;
-}
-
-.user-card, .widget-news {
-	background: var(--surface-card);
-	border: 1px solid var(--line-color);
-	border-radius: var(--radius-md);
-	padding: 1.2em;
-	margin-bottom: 1em;
-}
-
-.user-header {
-	display: flex;
-	align-items: center;
-	gap: 0.8em;
-	margin-bottom: 1em;
-}
-
-.avatar-placeholder {
-	width: 48px;
-	height: 48px;
-	border-radius: 50%;
-	background-color: var(--strava-orange);
-	color: var(--txt-light);
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	font-weight: bold;
-	font-size: 1.2em;
-}
-
-.user-info h3 {
-	font-size: 1.1em;
-	color: var(--txt-primary);
-}
-
-.user-role {
-	font-size: 0.85em;
-	color: var(--txt-secondary);
-}
-
-.user-stats {
-	display: flex;
-	justify-content: space-between;
-	border-top: 1px solid var(--line-color);
-	border-bottom: 1px solid var(--line-color);
-	padding: 0.8em 0;
-	margin-bottom: 1em;
-}
-
-.stat-box {
-	text-align: center;
-}
-
-.stat-number {
-	display: block;
-	font-size: 1.3em;
+#menu #currentLink span {
+	background-color: var(--color-skyblue);
+	color: var(--color-ink);
 	font-weight: 800;
-	color: var(--txt-light);
 }
 
-.stat-label {
-	font-size: 0.75em;
-	text-transform: uppercase;
-	color: var(--txt-muted);
+#menu .btn-login {
+	background-color: var(--color-mint);
+	color: var(--color-ink);
+	font-weight: 800;
 }
 
-.btn-primary {
-	display: block;
-	text-align: center;
-	background-color: var(--strava-orange);
-	color: var(--txt-light) !important;
-	text-decoration: none;
+#menu .btn-login:hover {
+	background-color: var(--color-snow);
+	color: var(--color-crimson);
+}
+
+/* Barra Breadcrumb & Sottotitolo */
+#barraPercorso {
+	background-color: var(--color-skyblue);
+	color: var(--color-ink);
+	border-top: 1px solid rgba(24, 34, 47, 0.12);
+}
+
+.subbar-container {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0.45em 1em;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+	gap: 0.5em;
+	font-size: 0.85em;
+}
+
+#breadcrumb a {
+	color: var(--color-crimson-dark);
 	font-weight: bold;
-	padding: 0.7em 1em;
-	border-radius: var(--radius-sm);
-	font-size: 0.9em;
-}
-
-.btn-primary:hover {
-	background-color: var(--strava-orange-hover);
-	color: var(--strava-orange)!important;
-}
-
-.widget-news h3 {
-	font-size: 1.1em;
-	margin-bottom: 0.8em;
-	border-bottom: 2px solid var(--line-color);
-	padding-bottom: 0.4em;
-}
-
-.widget-news dl {
-	display: grid;
-	grid-template-columns: auto 1fr;
-	gap: 0.4em 0.8em;
-}
-
-.widget-news dt {
-	font-size: 0.8em;
-	color: var(--txt-primary);
-	font-weight: bold;
-}
-
-.widget-news dd {
-	font-size: 0.88em;
-	margin-bottom: 0.5em;
-}
-
-.widget-news dd a {
-	color: var(--txt-primary);
 	text-decoration: underline;
 }
 
+#slogan {
+	color: var(--color-ink);
+	font-weight: 600;
+}
+
+/* ==========================================================================
+   CONTAINER PRINCIPALE (LAYOUT A COLONNA UNICA CENTRATA)
+   ========================================================================== */
+#container {
+	padding: 1.4em 1em;
+	width: 100%;
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
+#main-content {
+	display: flex;
+	flex-direction: column;
+	gap: 2.2em;
+}
+
+/* Hero Intro & Indice Rapido Categorie */
 #hero-intro {
-	background: var(--surface-card);
-	padding: 1.2em;
+	background-color: var(--color-mint);
+	padding: 1.5em;
 	border-radius: var(--radius-md);
-	border-left: 5px solid var(--strava-orange);
+	border: 1px solid var(--color-steelblue);
+	border-left: 6px solid var(--color-crimson);
 }
 
 #hero-intro h1 {
-	font-size: 1.6em;
+	font-size: 1.8em;
 	margin-bottom: 0.4em;
-	color: var(--txt-primary);
+	color: var(--color-crimson);
 }
 
-.activity-card {
-	background: var(--surface-card);
-	border: 1px solid var(--line-color);
-	border-radius: var(--radius-lg);
-	padding: 1.2em;
-	margin-top: 1em;
-	box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+#hero-intro p {
+	color: var(--color-ink);
+	font-size: 1.02em;
+	max-width: 65ch;
 }
 
-.activity-header {
+.hero-actions {
 	display: flex;
-	justify-content: space-between;
+	flex-wrap: wrap;
+	gap: 0.8em;
+	margin-top: 1.2em;
+}
+
+.btn-primary {
+	display: inline-flex;
 	align-items: center;
-	margin-bottom: 1em;
+	justify-content: center;
+	min-height: 44px;
+	background-color: var(--color-crimson);
+	color: var(--color-snow);
+	text-decoration: none;
+	font-weight: bold;
+	padding: 0.65em 1.3em;
+	border-radius: var(--radius-sm);
+	font-size: 0.95em;
+	border: 2px solid var(--color-crimson);
 }
 
-.author-badge {
+.btn-primary:hover {
+	background-color: var(--color-crimson-dark);
+	border-color: var(--color-crimson-dark);
+}
+
+.btn-secondary {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 44px;
+	background-color: var(--color-snow);
+	color: var(--color-crimson-dark);
+	text-decoration: none;
+	font-weight: bold;
+	padding: 0.65em 1.3em;
+	border-radius: var(--radius-sm);
+	font-size: 0.95em;
+	border: 2px solid var(--color-crimson);
+}
+
+.btn-secondary:hover {
+	background-color: var(--color-skyblue);
+	color: var(--color-ink);
+	border-color: var(--color-steelblue);
+}
+
+.category-jump {
+	margin-top: 1.3em;
+	padding-top: 1em;
+	border-top: 1px solid var(--color-steelblue);
 	display: flex;
+	flex-wrap: wrap;
 	align-items: center;
 	gap: 0.6em;
 }
 
-.author-avatar {
-	width: 38px;
-	height: 38px;
-	background-color: #334155;
-	color: var(--surface-card);
-	border-radius: 50%;
+.jump-label {
+	font-size: 0.88em;
+	font-weight: 700;
+	color: var(--color-ink);
+}
+
+.category-jump ul {
+	list-style: none;
 	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5em;
+}
+
+.category-jump a {
+	display: inline-flex;
 	align-items: center;
-	justify-content: center;
-	font-weight: bold;
-	font-size: 0.9em;
+	min-height: 44px;
+	padding: 0.35em 0.85em;
+	background-color: var(--color-snow);
+	color: var(--color-ink);
+	border: 1px solid var(--color-steelblue);
+	border-radius: var(--radius-sm);
+	font-size: 0.86em;
+	font-weight: 600;
+	text-decoration: underline;
 }
 
-.author-name {
-	font-weight: bold;
-	font-size: 0.9em;
+.category-jump a:hover {
+	background-color: var(--color-skyblue);
+	color: var(--color-ink);
 }
 
-.activity-date {
-	font-size: 0.78em;
-	color: var(--txt-primary);
-}
-
-.activity-title-block h2 {
-	font-size: 1.3em;
-	line-height: 1.3;
-	margin-bottom: 0.2em;
-}
-
-.activity-title-block a {
-	color: var(--txt-primary);
-	text-decoration: none;
-}
-
-.activity-title-block a:hover {
-	color: var(--strava-orange-hover);
-}
-
-.activity-location {
-	font-size: 0.85em;
-	color: var(--txt-primary);
-	font-weight: bold;
+/* Intestazioni Sezioni */
+.section-header {
 	margin-bottom: 1em;
 }
 
-.activity-metrics {
-	display: grid;
-	grid-template-columns: repeat(2, 1fr);
-	gap: 0.8em;
-	background-color: var(--strava-orange);
-	padding: 1em;
-	border-radius: var(--radius-md);
-	border: 1px solid var(--strava-orange);
-	margin-bottom: 1.2em;
+.section-header h2 {
+	font-size: 1.45em;
+	color: var(--color-crimson);
+	margin-bottom: 0.2em;
 }
 
-.metric-value {
-	display: block;
-	font-size: 1.2em;
-	font-weight: 800;
-	color: var(--txt-primary);
+.section-header p {
+	color: var(--color-ink-muted);
+	font-size: 0.95em;
+	max-width: 65ch;
 }
 
-.metric-label {
-	font-size: 0.75em;
-	color: var(--txt-primary);
-	text-transform: uppercase;
+/* ==========================================================================
+   GRIGLIA ITINERARI
+   ========================================================================== */
+.trips-grid {
+	display: flex;
+	flex-direction: column;
+	gap: 1.2em;
 }
 
-.activity-summary {
-	font-size: 0.92em;
-	color: var(--txt-primary);
-	margin-bottom: 1.2em;
-	line-height: 1.6;
+.trip-card {
+	background-color: var(--color-mint);
+	border: 1px solid var(--color-steelblue);
+	border-radius: var(--radius-lg);
+	padding: 1.3em;
+	display: flex;
+	flex-direction: column;
+	gap: 0.9em;
 }
 
-.tappe-feed h3 {
-	font-size: 1.1em;
-	margin-bottom: 0.8em;
-	color: var(--txt-primary);
-}
-
-.tappa-card {
-	border-left: 3px solid var(--strava-orange);
-	background: rgba(255, 255, 255, 0.8);
-	border-top: 1px solid rgba(255, 255, 255, 0.5);
-	border-right: 1px solid rgba(255, 255, 255, 0.5);
-	border-bottom: 1px solid rgba(255, 255, 255, 0.5);
-	padding: 1em;
-	border-radius: 0 var(--radius-md) var(--radius-md) 0;
-	margin-bottom: 0.8em;
-}
-
-.tappa-header {
+.trip-card-top {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	margin-bottom: 0.5em;
+	gap: 0.5em;
 }
 
-.tappa-header h4 {
-	font-size: 1em;
-	color: var(--txt-primary);
-}
-
-.tappa-days {
-	font-size: 0.78em;
-	background: #f1f5f9;
-	padding: 0.2em 0.5em;
-	border-radius: var(--radius-sm);
+.trip-destination {
+	font-size: 0.85em;
 	font-weight: bold;
+	color: var(--color-crimson-dark);
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
 }
 
-.stay-info {
-	font-size: 0.85em;
-	color: var(--txt-primary);
-	background-color: var(--focus-ring-color);
-	padding: 0.5em 0.8em;
-	border-radius: var(--radius-sm);
-	margin-bottom: 0.5em;
+.trip-card h3 {
+	font-size: 1.2em;
+	line-height: 1.35;
 }
 
-.tappa-text {
+.trip-card h3 a {
+	color: var(--color-ink);
+	text-decoration: underline;
+}
+
+.trip-card h3 a:visited {
+	color: var(--color-steelblue-dark);
+}
+
+.trip-card h3 a:hover {
+	color: var(--color-crimson);
+}
+
+.trip-specs {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 0.6em;
+	background-color: var(--color-snow);
+	padding: 0.8em;
+	border-radius: var(--radius-md);
+	border: 1px solid var(--color-skyblue);
+}
+
+.spec-item dt {
+	font-size: 0.72em;
+	text-transform: uppercase;
+	color: var(--color-ink-muted);
+	font-weight: 700;
+}
+
+.spec-item dd {
+	font-size: 0.95em;
+	font-weight: 800;
+	color: var(--color-crimson);
+}
+
+.trip-route {
 	font-size: 0.88em;
+	background-color: rgba(144, 194, 231, 0.35);
+	border-left: 3px solid var(--color-steelblue);
+	padding: 0.55em 0.75em;
+	border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+	color: var(--color-ink);
+	max-width: 65ch;
 }
 
-.pro-tip {
-	margin-top: 0.5em;
-	background-color: #fff7ed;
-	border-left: 3px solid #f97316;
-	padding: 0.5em 0.8em;
-	font-size: 0.85em;
-	border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+.trip-card-footer {
+	margin-top: auto;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 0.5em;
+	padding-top: 0.7em;
+	border-top: 1px solid var(--color-steelblue);
+	font-size: 0.84em;
+}
+
+.trip-meta {
+	color: var(--color-ink-muted);
+}
+
+.trip-link {
+	display: inline-flex;
+	align-items: center;
+	min-height: 44px;
+	padding: 0.25em 0.4em;
+	color: var(--color-crimson-dark);
+	font-weight: 800;
+	text-decoration: underline;
+	white-space: nowrap;
+}
+
+.trip-link:visited {
+	color: var(--color-steelblue-dark);
+}
+
+.trip-link:hover {
+	color: var(--color-ink);
 }
 
 .badge-verificato {
 	background-color: var(--badge-verificato-bg);
 	color: var(--badge-verificato-txt);
+	border: 1px solid var(--badge-verificato-txt);
 	padding: 0.2em 0.6em;
 	border-radius: var(--radius-sm);
 	font-weight: bold;
 	font-size: 0.75em;
+	white-space: nowrap;
 }
 
 .badge-attesa {
 	background-color: var(--badge-attesa-bg);
 	color: var(--badge-attesa-txt);
+	border: 1px solid var(--badge-attesa-txt);
 	padding: 0.2em 0.6em;
 	border-radius: var(--radius-sm);
 	font-weight: bold;
 	font-size: 0.75em;
+	white-space: nowrap;
 }
 
-/* SEZIONE PROFILI UTENZA - Fix Contenuti e Contrasti */
-#profili-utenza {
-	margin-top: 2em;
-}
-
-#profili-utenza h2 {
-	font-size: 1.4em;
-	margin-bottom: 0.6em;
-	color: var(--strava-orange);
-}
-
-#profili-utenza > p {
-	color: var(--strava-orange);
-	margin-bottom: 1em;
-}
-
+/* ==========================================================================
+   SEZIONI CHI SIAMO & PROFILI UTENZA (riutilizzabili in chiSiamo.html)
+   ========================================================================== */
 .profiles-grid {
 	display: flex;
 	flex-direction: column;
-	gap: 0.8em;
+	gap: 1em;
 }
 
 .profile-card {
-	background: var(--surface-card);
-	border: 1px solid var(--line-color);
-	padding: 1em;
+	background-color: var(--color-mint);
+	border: 1px solid var(--color-steelblue);
+	padding: 1.2em;
 	border-radius: var(--radius-md);
 }
 
 .profile-card h3 {
-	font-size: 1.1em;
-	color: var(--txt-primary);
+	font-size: 1.08em;
+	color: var(--color-crimson-dark);
 	margin-bottom: 0.4em;
 }
 
 .profile-card p {
-	color: var(--txt-primary);
-	font-size: 0.9em;
-	line-height: 1.5;
+	color: var(--color-ink);
+	font-size: 0.92em;
+	line-height: 1.55;
+	max-width: 65ch;
 }
 
 blockquote {
-	background: rgba(255, 255, 255, 0.9);
-	border-left: 4px solid var(--strava-orange);
-	padding: 0.8em 1em;
-	margin: 1.5em 0;
+	background-color: var(--color-mint);
+	border-left: 5px solid var(--color-crimson);
+	border-top: 1px solid var(--color-steelblue);
+	border-right: 1px solid var(--color-steelblue);
+	border-bottom: 1px solid var(--color-steelblue);
+	padding: 1.1em 1.3em;
 	font-style: italic;
 	border-radius: 0 var(--radius-md) var(--radius-md) 0;
 }
 
 blockquote p {
-    color: var(--txt-primary);
+	color: var(--color-ink);
+	max-width: 65ch;
 }
 
 blockquote cite {
 	display: block;
 	text-align: right;
 	font-style: normal;
-	font-size: 0.85em;
+	font-size: 0.9em;
 	font-weight: bold;
 	margin-top: 0.4em;
-    color: var(--txt-primary);
+	color: var(--color-crimson-dark);
 }
 
+/* Collegamento rapido Torna su */
+.back-to-top-wrapper {
+	display: flex;
+	justify-content: flex-end;
+}
+
+.back-to-top {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 44px;
+	min-width: 44px;
+	padding: 0.55em 1.1em;
+	background-color: var(--color-mint);
+	color: var(--color-ink);
+	border: 1px solid var(--color-steelblue);
+	border-radius: var(--radius-sm);
+	font-size: 0.9em;
+	font-weight: 700;
+	text-decoration: underline;
+}
+
+.back-to-top:hover {
+	background-color: var(--color-skyblue);
+}
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
 footer {
-	background-color: var(--header-bg);
-	color: var(--strava-orange);
+	background-color: var(--color-crimson);
+	color: var(--color-snow);
 	padding: 1.5em 1em;
 	margin-top: auto;
-	border-top: 1px solid var(--txt-muted);
+	border-top: 4px solid var(--color-steelblue);
 }
 
 .footer-content {
@@ -632,10 +639,47 @@ footer {
 	width: 88px;
 }
 
-/* RESPONSIVE / DESKTOP (MENU ORIZZONTALE A RIGA UNICA) */
+/* ==========================================================================
+   RESPONSIVE / TABLET & DESKTOP
+   ========================================================================== */
 @media screen and (min-width: 768px) {
+	#container {
+		padding: 2em;
+	}
+
+	#hero-intro {
+		padding: 2em;
+	}
+
+	.trips-grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 1.3em;
+		align-items: stretch;
+	}
+
+	.profiles-grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 1.2em;
+	}
+
+	.footer-content {
+		max-width: 1200px;
+		margin: 0 auto;
+		flex-direction: row;
+		justify-content: space-between;
+	}
+}
+
+@media screen and (min-width: 960px) {
+	.navbar-container {
+		flex-wrap: nowrap;
+		padding: 0.9em 2em;
+	}
+
 	#logo-title {
-		font-size: 3.8em;
+		font-size: 2.3em;
 	}
 
 	#bottoneMenu {
@@ -644,12 +688,13 @@ footer {
 
 	#menu #menu-lista {
 		display: flex;
-		justify-content: center;
-		gap: 1em;
-		padding: 0;
-		margin-top: 0;
+		flex-direction: row;
+		align-items: center;
+		width: auto;
+		gap: 0.55em;
 		background: none;
 		border: none;
+		overflow: visible;
 	}
 
 	#menu li {
@@ -657,53 +702,45 @@ footer {
 	}
 
 	#menu a, #menu #currentLink span {
+		padding: 0.55em 0.9em;
 		border-radius: var(--radius-sm);
-		padding: 0.6em 1.2em;
-		background-color: var(--strava-orange);
-		border: 1px solid var(--bgcolor-body);
 		white-space: nowrap;
+		border: 1px solid transparent;
+		font-size: 0.92em;
+	}
+
+	#menu a {
+		background-color: rgba(252, 247, 248, 0.12);
+		border-color: rgba(252, 247, 248, 0.25);
 	}
 
 	#menu a:hover {
-		background-color: var(--focus-ring-color);
-		border-color: var(--strava-orange-hover);
+		background-color: var(--color-steelblue-dark);
+		border-color: var(--color-snow);
 	}
 
-	#menu #currentLink {
-		background-color: var(--strava-orange);
-		font-weight: bold;
+	#menu #currentLink span {
+		background-color: var(--color-skyblue);
+		color: var(--color-ink);
+		border-color: var(--color-snow);
 	}
 
-	#container {
-		max-width: 1200px;
-		margin: 0 auto;
-		padding: 2em;
-		display: grid;
-		grid-template-columns: 320px 1fr;
-		gap: 2em;
-		align-items: start;
+	#menu .nav-auth {
+		margin-left: 0.5em;
 	}
 
-	#sidebar-utente {
-		position: sticky;
-		top: 2em;
+	#menu .btn-login {
+		background-color: var(--color-mint);
+		color: var(--color-ink);
+		border-color: var(--color-snow);
 	}
 
-	.activity-metrics {
-		grid-template-columns: repeat(4, 1fr);
-		padding: 1.2em;
+	#menu .btn-login:hover {
+		background-color: var(--color-snow);
+		color: var(--color-crimson);
 	}
 
-	.profiles-grid {
-		display: grid;
-		grid-template-columns: repeat(3, 1fr);
-		gap: 1em;
-	}
-
-	.footer-content {
-		max-width: 1200px;
-		margin: 0 auto;
-		flex-direction: row;
-		justify-content: space-between;
+	.subbar-container {
+		padding: 0.5em 2em;
 	}
 }

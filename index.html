@@ -1,11 +1,11 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="it" xml:lang="it">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>MiVago</title>
     
-    <meta name="description" content="Piattaforma community-driven per condividere itinerari di viaggio strutturati, tappe, alloggi e consigli pratici." />
-    <meta name="keywords" content="MiVago, itinerari viaggio, tappe, diari di viaggio, consigli pratici, alloggi, Giappone" />
+    <meta name="description" content="Piattaforma community-driven per condividere itinerari di viaggio strutturati, tappe, alloggi e consigli pratici verificati." />
+    <meta name="keywords" content="MiVago, itinerari viaggio, tappe, diari di viaggio, viaggi al mare, viaggi culturali, esperienze di coppia, viaggi economici" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <link rel="stylesheet" type="text/css" href="mobile.css" media="screen" />
@@ -15,251 +15,386 @@
 </head>
 <body>
 
-    <!-- Header principale -->
-    <div id="header-wrapper">
-        <header>
-            <div class="header-top">
-                <div id="brand">
-                    <a href="index.html" id="logo-link">
-                        <span id="logo-title">MiVago</span>
-                        <span id="slogan-ven"><i>"Tu vien? Mi vago"</i></span>
-                        <span id="slogan"><i>Tu vieni? Io vado</i></span>
-                    </a>
-                </div>
-                <div class="header-auth">
-                    <a href="login.php" class="btn-login"><span lang="en">Login</span></a>
-                </div>
+    <!-- Aiuti alla navigazione per Screen Reader e Tastiera -->
+    <div class="skip-links">
+        <a href="#main-content">Salta al contenuto principale</a>
+        <a href="#menu-lista">Salta alla navigazione</a>
+    </div>
+
+    <!-- Header con Top Nav-Bar -->
+    <header id="header-wrapper">
+        <div class="navbar-container">
+            <div id="brand">
+                <a href="index.html" id="logo-link">
+                    <span id="logo-title">MiVago</span>
+                    <span id="slogan-ven" lang="vec"><em>&ldquo;Tu vien? Mi vago&rdquo;</em></span>
+                </a>
             </div>
-            
+
             <nav id="menu" aria-label="Navigazione principale">
                 <input type="checkbox" id="menu-toggle" class="sr-only" />
                 <label for="menu-toggle" id="bottoneMenu">Menu</label>
                 <ul id="menu-lista">
-                    <li id="currentLink"><span>Home</span></li>
+                    <li id="currentLink"><span aria-current="page">Home</span></li>
                     <li><a href="itinerari.php">Esplora Itinerari</a></li>
                     <li><a href="nuovoViaggio.php">Condividi Viaggio</a></li>
                     <li><a href="areaPersonale.php">I Miei Viaggi</a></li>
+                    <li><a href="chiSiamo.html">Chi Siamo</a></li>
+                    <li class="nav-auth"><a href="login.php" class="btn-login"><span lang="en">Login</span></a></li>
                 </ul>
             </nav>
-        </header>
-    </div>
+        </div>
+
+        <div id="barraPercorso">
+            <div class="subbar-container">
+                <nav id="breadcrumb" aria-label="Percorso di navigazione">
+                    <p>Ti trovi in: <strong aria-current="page">Home</strong></p>
+                </nav>
+                <p id="slogan">Tu vieni? Io vado</p>
+            </div>
+        </div>
+    </header>
 
     <!-- Contenitore Layout Principale -->
     <div id="container">
-
-        <!-- Sidebar / Profilo Utente -->
-        <aside id="sidebar-utente" aria-labelledby="titolo-profilo">
-            <h2 id="titolo-profilo" class="sr-only">Profilo Utente e Statistiche</h2>
-            
-            <div class="user-card">
-                <div class="user-header">
-                    <div class="avatar-placeholder">GV</div>
-                    <div class="user-info">
-                        <h3>Marco Rossi</h3>
-                        <p class="user-role">Explorer <span class="badge-verified" title="Account Verificato">&#10004;</span></p>
-                    </div>
-                </div>
-                
-                <div class="user-stats">
-                    <div class="stat-box">
-                        <span class="stat-number">12</span>
-                        <span class="stat-label">Itinerari</span>
-                    </div>
-                    <div class="stat-box">
-                        <span class="stat-number">45</span>
-                        <span class="stat-label">Tappe</span>
-                    </div>
-                    <div class="stat-box">
-                        <span class="stat-number">8</span>
-                        <span class="stat-label">Paesi</span>
-                    </div>
-                </div>
-
-                <div class="user-cta">
-                    <a href="nuovoViaggio.php" class="btn-primary">+ Carica nuovo viaggio</a>
-                </div>
-            </div>
-
-            <!-- Widget Ultimi Itinerari -->
-            <div class="widget-news">
-                <h3>Ultimi diari pubblicati</h3>
-                <dl>
-                    <dt><time datetime="2026-11-02">02/11/2026</time></dt>
-                    <dd>
-                        <a href="itinerari.php?id=102">Giappone tra tradizione e futuro</a>
-                        <span class="badge-verificato"><abbr title="Verificato dall'Amministrazione">Verificato</abbr></span>
-                    </dd>
-                    
-                    <dt><time datetime="2026-10-28">28/10/2026</time></dt>
-                    <dd>
-                        <a href="itinerari.php?id=101">Weekend romantico a Parigi</a>
-                        <span class="badge-verificato"><abbr title="Verificato dall'Amministrazione">Verificato</abbr></span>
-                    </dd>
-
-                    <dt><time datetime="2026-10-15">15/10/2026</time></dt>
-                    <dd>
-                        <a href="itinerari.php?id=99"><span lang="en">Interrail</span> nei Balcani</a>
-                        <span class="badge-attesa"><abbr title="In attesa di verifica editoriale">In attesa</abbr></span>
-                    </dd>
-                </dl>
-            </div>
-        </aside>
-
-        <!-- Main Content -->
         <main id="main-content" tabindex="-1">
             
+            <!-- Sezione Introduttiva -->
             <section id="hero-intro">
                 <h1>Benvenuti su MiVago</h1>
-                <p><strong>MiVago</strong> la piattaforma <span lang="en">community-driven</span> 
-                    dove i viaggiatori tracciano, condividono e consultano itinerari di viaggio reali 
-                    suddivisi in tappe geografiche e completi di costi, alloggi e consigli pratici verificati.
-                </p>
-            </section>
-
-            <!-- Card Itinerario Feed Stile Strava Activity Card -->
-            <article class="activity-card">
+                <p><strong>MiVago</strong> &egrave; la piattaforma <span lang="en">community-driven</span> dove i viaggiatori raccontano e consultano itinerari reali suddivisi in tappe geografiche, completi di budget dettagliato, valutazione degli alloggi e consigli pratici verificati dalla redazione.</p>
                 
-                <div class="activity-header">
-                    <div class="author-badge">
-                        <div class="author-avatar">AA</div>
-                        <div class="author-details">
-                            <p class="author-name">Alessandro A.</p>
-                            <p class="activity-date">Pubblicato il <time datetime="2026-11-02">02/11/2026</time></p>
-                        </div>
-                    </div>
-                    <div class="activity-status">
-                        <span class="badge-verificato"><abbr title="Revisionato dal team editoriale">Verificato</abbr></span>
-                    </div>
+                <div class="hero-actions">
+                    <a href="itinerari.php" class="btn-primary">Esplora tutti gli itinerari</a>
+                    <a href="login.php" class="btn-secondary">Accedi per pubblicare il tuo diario</a>
                 </div>
 
-                <div class="activity-title-block">
-                    <h2><a href="itinerari.php?id=102">Giappone tra tradizione e futuro: da Tokyo a Osaka</a></h2>
-                    <p class="activity-location"><span lang="ja">Asia</span> &mdash; Giappone</p>
+                <!-- Indice rapido per navigazione one-handed e scansione categorie -->
+                <nav class="category-jump" aria-label="Vai direttamente a una categoria di viaggio">
+                    <span class="jump-label">Esplora per categoria:</span>
+                    <ul>
+                        <li><a href="#itinerari-evidenza">Ultimi itinerari</a></li>
+                        <li><a href="#viaggi-mare">Viaggi al mare</a></li>
+                        <li><a href="#viaggi-cultura">Viaggi culturali</a></li>
+                        <li><a href="#esperienze-coppia">Esperienze di coppia</a></li>
+                        <li><a href="#sotto-50-euro">Sotto i 50 euro</a></li>
+                    </ul>
+                </nav>
+            </section>
+
+            <!-- Sezione 1: Ultimi Itinerari della Community -->
+            <section id="itinerari-evidenza" aria-labelledby="titolo-itinerari">
+                <div class="section-header">
+                    <h2 id="titolo-itinerari">Ultimi Itinerari della Community</h2>
+                    <p>Diari di viaggio reali organizzati per tappe, costi e stile di esplorazione.</p>
                 </div>
 
-                <div class="activity-metrics">
-                    <div class="metric">
-                        <span class="metric-value">14 <abbr title="giorni">gg</abbr></span>
-                        <span class="metric-label">Durata</span>
-                    </div>
-                    <div class="metric">
-                        <span class="metric-value">2400 &euro;</span>
-                        <span class="metric-label">Budget / pers.</span>
-                    </div>
-                    <div class="metric">
-                        <span class="metric-value"><span lang="en">Medium</span></span>
-                        <span class="metric-label">Fascia di spesa</span>
-                    </div>
-                    <div class="metric">
-                        <span class="metric-value">Zaino in spalla</span>
-                        <span class="metric-label">Stile viaggio</span>
-                    </div>
-                </div>
-
-                <div class="activity-summary">
-                    <p><strong>Sintesi del Viaggio (Debrief):</strong> Un itinerario di due settimane ottimizzato per evitare sprechi di tempo e registrazioni ridondanti. Suddiviso in 3 macro-tappe strategiche per coprire il territorio nazionale senza violare la Terza Forma Normale (<abbr title="Terza Forma Normale">3NF</abbr>) del <span lang="en">database</span>.</p>
-                </div>
-
-                <div class="tappe-feed">
-                    <h3>Tappe e Segmenti dell'Itinerario</h3>
-
-                    <div class="tappa-card">
-                        <div class="tappa-header">
-                            <h4>Tappa 1 &mdash; <span lang="ja">Tokyo</span></h4>
-                            <span class="tappa-days">Giorni 1&ndash;5</span>
+                <div class="trips-grid">
+                    
+                    <article class="trip-card">
+                        <div class="trip-card-top">
+                            <span class="trip-destination">Asia &mdash; Giappone</span>
+                            <span class="badge-verificato"><span aria-hidden="true">&#10004; </span><abbr title="Revisionato dal team editoriale">Verificato</abbr></span>
                         </div>
-                        <div class="tappa-body">
-                            <div class="stay-info">
-                                <p><strong>Alloggio:</strong> <span lang="en">Sakura Hostel Asakusa</span></p>
-                                <p><strong>Valutazione:</strong> <span class="rating">4 / 5</span> | <strong>Costo medio:</strong> 45 &euro;/notte</p>
-                            </div>
-                            <div class="tappa-text">
-                                <p><strong>Escursioni e Diario:</strong> Esplorazione intensiva dei quartieri di <span lang="ja">Shibuya</span> e <span lang="ja">Asakusa</span>, con escursione giornaliera a <span lang="ja">Nikko</span>.</p>
-                                <div class="pro-tip">
-                                    <p><strong>Consiglio Pratico:</strong> Attivare l'abbonamento dei treni in stazione all'arrivo; al tempio <span lang="ja">Senso-ji</span> andare rigorosamente prima delle 8:00 per evitare le scolaresche.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="tappa-card">
-                        <div class="tappa-header">
-                            <h4>Tappa 2 &mdash; <span lang="ja">Kyoto</span> e <span lang="ja">Nara</span></h4>
-                            <span class="tappa-days">Giorni 6&ndash;10</span>
-                        </div>
-                        <div class="tappa-body">
-                            <div class="stay-info">
-                                <p><strong>Alloggio:</strong> <span lang="ja">Ryokan Gion</span></p>
-                                <p><strong>Valutazione:</strong> <span class="rating">5 / 5</span> | <strong>Costo medio:</strong> 90 &euro;/notte</p>
-                            </div>
-                            <div class="tappa-text">
-                                <p><strong>Escursioni e Diario:</strong> Visita al santuario <span lang="ja">Fushimi Inari</span> all'alba e gita in giornata tra i cervi di <span lang="ja">Nara</span>.</p>
-                                <div class="pro-tip">
-                                    <p><strong>Consiglio Pratico:</strong> Per lo <span lang="ja">Shinkansen</span> da Tokyo a Kyoto prenotate il posto sul lato del Monte Fuji (<span lang="en">Seat E</span>) con almeno 3 giorni di anticipo.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                        <h3><a href="itinerari.php?id=102">Giappone tra tradizione e futuro: da <span lang="ja">Tokyo</span> a <span lang="ja">Osaka</span></a></h3>
 
-                    <div class="tappa-card">
-                        <div class="tappa-header">
-                            <h4>Tappa 3 &mdash; <span lang="ja">Osaka</span> e <span lang="ja">Hiroshima</span></h4>
-                            <span class="tappa-days">Giorni 11&ndash;14</span>
-                        </div>
-                        <div class="tappa-body">
-                            <div class="stay-info">
-                                <p><strong>Alloggio:</strong> <span lang="en">Business Hotel Namba</span></p>
-                                <p><strong>Valutazione:</strong> <span class="rating">4 / 5</span> | <strong>Costo medio:</strong> 60 &euro;/notte</p>
+                        <dl class="trip-specs">
+                            <div class="spec-item">
+                                <dt>Durata</dt>
+                                <dd>14 <abbr title="giorni">gg</abbr></dd>
                             </div>
-                            <div class="tappa-text">
-                                <p><strong>Escursioni e Diario:</strong> Visita al castello di Osaka e gita in giornata a Hiroshima ed isola di <span lang="ja">Miyajima</span>.</p>
+                            <div class="spec-item">
+                                <dt>Budget / pers.</dt>
+                                <dd>2400 &euro;</dd>
                             </div>
+                            <div class="spec-item">
+                                <dt>Stile</dt>
+                                <dd>Zaino in spalla</dd>
+                            </div>
+                            <div class="spec-item">
+                                <dt>Struttura</dt>
+                                <dd>3 tappe</dd>
+                            </div>
+                        </dl>
+
+                        <p class="trip-route"><strong>Percorso:</strong> <span lang="ja">Tokyo</span> (gg 1&ndash;5) &rarr; <span lang="ja">Kyoto</span> e <span lang="ja">Nara</span> (gg 6&ndash;10) &rarr; <span lang="ja">Osaka</span> e <span lang="ja">Hiroshima</span> (gg 11&ndash;14).</p>
+
+                        <div class="trip-card-footer">
+                            <span class="trip-meta">Di <strong>Alessandro A.</strong> &bull; <time datetime="2026-11-02">02/11/2026</time></span>
+                            <a href="itinerari.php?id=102" class="trip-link">Leggi tappe &rarr;</a>
                         </div>
-                    </div>
+                    </article>
 
-                </div>
+                    <article class="trip-card">
+                        <div class="trip-card-top">
+                            <span class="trip-destination">Europa &mdash; Francia</span>
+                            <span class="badge-verificato"><span aria-hidden="true">&#10004; </span><abbr title="Revisionato dal team editoriale">Verificato</abbr></span>
+                        </div>
 
-                <div class="activity-footer">
-                    <p class="community-note">Itinerario approvato dal team di moderazione di MiVago per accuratezza logistica.</p>
-                </div>
-            </article>
+                        <h3><a href="itinerari.php?id=101"><span lang="en">Weekend</span> lungo a Parigi tra musei e quartieri storici</a></h3>
 
-            <section id="profili-utenza">
-                <h2>Profilazione della Community</h2>
-                <p>La nostra piattaforma &egrave; progettata attorno a tre categorie principali di viaggiatori:</p>
-                <div class="profiles-grid">
-                    <div class="profile-card">
-                        <h3>1. Viaggiatore Indipendente</h3>
-                        <p><span lang="en">Low-Budget</span> / Zaino in spalla. Focalizzato sui filtri costo e consigli logistici per i trasporti pubblici e ostelli.</p>
-                    </div>
-                    <div class="profile-card">
-                        <h3>2. Gruppo o Famiglia</h3>
-                        <p>Pianificazione sicura per 3+ persone. Priorit&agrave; alle valutazioni degli alloggi e alla chiarezza delle tappe.</p>
-                    </div>
-                    <div class="profile-card">
-                        <h3>3. Turista Culturale / Coppia</h3>
-                        <p>Soggiorni brevi o tematici. Cerca ispirazione visiva dagli itinerari con badge <span class="badge-verificato">Verificato</span>.</p>
-                    </div>
+                        <dl class="trip-specs">
+                            <div class="spec-item">
+                                <dt>Durata</dt>
+                                <dd>4 <abbr title="giorni">gg</abbr></dd>
+                            </div>
+                            <div class="spec-item">
+                                <dt>Budget / pers.</dt>
+                                <dd>580 &euro;</dd>
+                            </div>
+                            <div class="spec-item">
+                                <dt>Stile</dt>
+                                <dd>Culturale / Coppia</dd>
+                            </div>
+                            <div class="spec-item">
+                                <dt>Struttura</dt>
+                                <dd>4 tappe</dd>
+                            </div>
+                        </dl>
+
+                        <p class="trip-route"><strong>Percorso:</strong> <span lang="fr">Le Marais</span> &rarr; <span lang="fr">Louvre</span> e <span lang="fr">Tuileries</span> &rarr; <span lang="fr">Montmartre</span> &rarr; <span lang="fr">Versailles</span>.</p>
+
+                        <div class="trip-card-footer">
+                            <span class="trip-meta">Di <strong>Chiara B.</strong> &bull; <time datetime="2026-10-28">28/10/2026</time></span>
+                            <a href="itinerari.php?id=101" class="trip-link">Leggi tappe &rarr;</a>
+                        </div>
+                    </article>
+
+                    <article class="trip-card">
+                        <div class="trip-card-top">
+                            <span class="trip-destination">Europa &mdash; Balcani</span>
+                            <span class="badge-attesa"><span aria-hidden="true">&#9203; </span><abbr title="In attesa di verifica editoriale">In attesa</abbr></span>
+                        </div>
+
+                        <h3><a href="itinerari.php?id=99"><span lang="en">Interrail</span> nei Balcani: da Lubiana a Cattaro</a></h3>
+
+                        <dl class="trip-specs">
+                            <div class="spec-item">
+                                <dt>Durata</dt>
+                                <dd>10 <abbr title="giorni">gg</abbr></dd>
+                            </div>
+                            <div class="spec-item">
+                                <dt>Budget / pers.</dt>
+                                <dd>720 &euro;</dd>
+                            </div>
+                            <div class="spec-item">
+                                <dt>Stile</dt>
+                                <dd><span lang="en">Low-Budget</span></dd>
+                            </div>
+                            <div class="spec-item">
+                                <dt>Struttura</dt>
+                                <dd>4 tappe</dd>
+                            </div>
+                        </dl>
+
+                        <p class="trip-route"><strong>Percorso:</strong> Lubiana &rarr; Zagabria &rarr; Mostar e Sarajevo &rarr; Bocche di Cattaro.</p>
+
+                        <div class="trip-card-footer">
+                            <span class="trip-meta">Di <strong>Luca M.</strong> &bull; <time datetime="2026-10-15">15/10/2026</time></span>
+                            <a href="itinerari.php?id=99" class="trip-link">Leggi tappe &rarr;</a>
+                        </div>
+                    </article>
+
                 </div>
             </section>
 
-            <blockquote>
-                <p lang="en">&ldquo;Travel is fatal to prejudice, bigotry, and narrow-mindedness.&rdquo;</p>
-                <p>(Il viaggio &egrave; fatale per il pregiudizio, il bigottismo e la chiusura mentale.)</p>
-                <p><cite>Mark Twain</cite></p>
-            </blockquote>
+            <!-- Sezione 2: Viaggi al mare -->
+            <section id="viaggi-mare" aria-labelledby="titolo-mare">
+                <div class="section-header">
+                    <h2 id="titolo-mare">Viaggi al mare</h2>
+                    <p>Itinerari costieri, isole e calette selezionate con consigli su spiagge e spostamenti.</p>
+                </div>
+
+                <div class="trips-grid">
+                    <article class="trip-card">
+                        <div class="trip-card-top">
+                            <span class="trip-destination">Europa &mdash; Italia</span>
+                            <span class="badge-verificato"><span aria-hidden="true">&#10004; </span><abbr title="Revisionato dal team editoriale">Verificato</abbr></span>
+                        </div>
+
+                        <h3><a href="itinerari.php?id=105">Golfo di Orosei e Sardegna orientale: da Olbia a Cala Gonone</a></h3>
+
+                        <dl class="trip-specs">
+                            <div class="spec-item">
+                                <dt>Durata</dt>
+                                <dd>6 <abbr title="giorni">gg</abbr></dd>
+                            </div>
+                            <div class="spec-item">
+                                <dt>Budget / pers.</dt>
+                                <dd>690 &euro;</dd>
+                            </div>
+                            <div class="spec-item">
+                                <dt>Stile</dt>
+                                <dd>Mare / Natura</dd>
+                            </div>
+                            <div class="spec-item">
+                                <dt>Struttura</dt>
+                                <dd>3 tappe</dd>
+                            </div>
+                        </dl>
+
+                        <p class="trip-route"><strong>Percorso:</strong> Olbia e Tavolara &rarr; San Teodoro &rarr; Cala Gonone e Cala Luna.</p>
+
+                        <div class="trip-card-footer">
+                            <span class="trip-meta">Di <strong>Elena R.</strong> &bull; <time datetime="2026-09-14">14/09/2026</time></span>
+                            <a href="itinerari.php?id=105" class="trip-link">Leggi tappe &rarr;</a>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Sezione 3: Viaggi culturali -->
+            <section id="viaggi-cultura" aria-labelledby="titolo-cultura">
+                <div class="section-header">
+                    <h2 id="titolo-cultura">Viaggi culturali</h2>
+                    <p>Citt&agrave; d'arte, siti archeologici e percorsi storici con orari e prenotazioni consigliate.</p>
+                </div>
+
+                <div class="trips-grid">
+                    <article class="trip-card">
+                        <div class="trip-card-top">
+                            <span class="trip-destination">Europa &mdash; Italia</span>
+                            <span class="badge-verificato"><span aria-hidden="true">&#10004; </span><abbr title="Revisionato dal team editoriale">Verificato</abbr></span>
+                        </div>
+
+                        <h3><a href="itinerari.php?id=108">Firenze e i borghi del Chianti tra musei e Rinascimento</a></h3>
+
+                        <dl class="trip-specs">
+                            <div class="spec-item">
+                                <dt>Durata</dt>
+                                <dd>4 <abbr title="giorni">gg</abbr></dd>
+                            </div>
+                            <div class="spec-item">
+                                <dt>Budget / pers.</dt>
+                                <dd>480 &euro;</dd>
+                            </div>
+                            <div class="spec-item">
+                                <dt>Stile</dt>
+                                <dd>Culturale</dd>
+                            </div>
+                            <div class="spec-item">
+                                <dt>Struttura</dt>
+                                <dd>3 tappe</dd>
+                            </div>
+                        </dl>
+
+                        <p class="trip-route"><strong>Percorso:</strong> Centro storico e Uffizi &rarr; Oltrarno e Palazzo Pitti &rarr; Greve in Chianti.</p>
+
+                        <div class="trip-card-footer">
+                            <span class="trip-meta">Di <strong>Matteo V.</strong> &bull; <time datetime="2026-10-04">04/10/2026</time></span>
+                            <a href="itinerari.php?id=108" class="trip-link">Leggi tappe &rarr;</a>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Sezione 4: Esperienze di coppia -->
+            <section id="esperienze-coppia" aria-labelledby="titolo-coppia">
+                <div class="section-header">
+                    <h2 id="titolo-coppia">Esperienze di coppia</h2>
+                    <p>Fughe di fine settimana, borghi panoramici e itinerari rilassanti pensati per due.</p>
+                </div>
+
+                <div class="trips-grid">
+                    <article class="trip-card">
+                        <div class="trip-card-top">
+                            <span class="trip-destination">Europa &mdash; Italia</span>
+                            <span class="badge-verificato"><span aria-hidden="true">&#10004; </span><abbr title="Revisionato dal team editoriale">Verificato</abbr></span>
+                        </div>
+
+                        <h3><a href="itinerari.php?id=112">Tramonti sulla Costiera Amalfitana: da Positano a Ravello</a></h3>
+
+                        <dl class="trip-specs">
+                            <div class="spec-item">
+                                <dt>Durata</dt>
+                                <dd>3 <abbr title="giorni">gg</abbr></dd>
+                            </div>
+                            <div class="spec-item">
+                                <dt>Budget / pers.</dt>
+                                <dd>520 &euro;</dd>
+                            </div>
+                            <div class="spec-item">
+                                <dt>Stile</dt>
+                                <dd>Coppia</dd>
+                            </div>
+                            <div class="spec-item">
+                                <dt>Struttura</dt>
+                                <dd>3 tappe</dd>
+                            </div>
+                        </dl>
+
+                        <p class="trip-route"><strong>Percorso:</strong> Positano &rarr; Amalfi e Atrani &rarr; Villa Cimbrone a Ravello.</p>
+
+                        <div class="trip-card-footer">
+                            <span class="trip-meta">Di <strong>Giulia P.</strong> &bull; <time datetime="2026-09-27">27/09/2026</time></span>
+                            <a href="itinerari.php?id=112" class="trip-link">Leggi tappe &rarr;</a>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Sezione 5: Sotto i 50 euro -->
+            <section id="sotto-50-euro" aria-labelledby="titolo-economici">
+                <div class="section-header">
+                    <h2 id="titolo-economici">Sotto i 50 euro</h2>
+                    <p>Gite in giornata e micro-avventure a basso costo raggiungibili in treno o autobus.</p>
+                </div>
+
+                <div class="trips-grid">
+                    <article class="trip-card">
+                        <div class="trip-card-top">
+                            <span class="trip-destination">Europa &mdash; Italia</span>
+                            <span class="badge-verificato"><span aria-hidden="true">&#10004; </span><abbr title="Revisionato dal team editoriale">Verificato</abbr></span>
+                        </div>
+
+                        <h3><a href="itinerari.php?id=115">Gita tra i Colli Euganei: da Monselice ad Arqu&agrave; Petrarca</a></h3>
+
+                        <dl class="trip-specs">
+                            <div class="spec-item">
+                                <dt>Durata</dt>
+                                <dd>1 <abbr title="giorno">gg</abbr></dd>
+                            </div>
+                            <div class="spec-item">
+                                <dt>Budget / pers.</dt>
+                                <dd>35 &euro;</dd>
+                            </div>
+                            <div class="spec-item">
+                                <dt>Stile</dt>
+                                <dd><span lang="en">Low-Budget</span></dd>
+                            </div>
+                            <div class="spec-item">
+                                <dt>Struttura</dt>
+                                <dd>2 tappe</dd>
+                            </div>
+                        </dl>
+
+                        <p class="trip-route"><strong>Percorso:</strong> Rocca di Monselice &rarr; Sentiero del Monte Ricco &rarr; Borgo di Arqu&agrave; Petrarca.</p>
+
+                        <div class="trip-card-footer">
+                            <span class="trip-meta">Di <strong>Davide S.</strong> &bull; <time datetime="2026-10-19">19/10/2026</time></span>
+                            <a href="itinerari.php?id=115" class="trip-link">Leggi tappe &rarr;</a>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Collegamento rapido di ritorno a inizio pagina -->
+            <div class="back-to-top-wrapper">
+                <a href="#header-wrapper" class="back-to-top">Torna su &uarr;</a>
+            </div>
 
         </main>
     </div>
 
     <footer>
         <div class="footer-content">
-            <img class="imgValidCode" src="materiale/images/valid-html5.png" alt="HTML5 Valido e conforme XML" />
+            <img class="imgValidCode" src="materiale/valid-html5.png" alt="HTML5 Valido e conforme XML" width="88" height="31" />
             <div class="footer-text">
                 <p>Laboratorio di Tecnologie Web 2026 &mdash; Universit&agrave; degli Studi di Padova</p> 
-                <p>Progetto MiVago (Travel Log &amp; Itinerary Hub) &mdash; Tutti i diritti riservati.</p>
+                <p>Progetto MiVago &mdash; Tutti i diritti riservati.</p>
             </div>
-            <img class="imgValidCode" src="materiale/images/vcss-blue.png" alt="CSS Valido secondo specifiche W3C" />
+            <img class="imgValidCode" src="materiale/vcss-blue.png" alt="CSS Valido secondo specifiche W3C" width="88" height="31" />
         </div>
     </footer>
 
