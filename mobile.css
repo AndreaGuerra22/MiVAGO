@@ -1,6 +1,18 @@
 /* ==========================================================================
    MiVAGO - CSS Mobile First & Responsive Unificato (Sintassi Pura CSS)
+   Approccio mobile-first: gli stili base valgono per lo smartphone,
+   i media query in em aggiungono tablet e desktop.
    ========================================================================== */
+
+/* Font Lexend (licenza SIL OFL, vedi materiale/fonts/OFL.txt): hosting locale,
+   solo caratteri latini, un unico file con peso variabile 100-900. */
+@font-face {
+	font-family: "Lexend";
+	src: url("materiale/fonts/Lexend-VF.woff2") format("woff2");
+	font-weight: 100 900;
+	font-style: normal;
+	font-display: swap;
+}
 
 * {
 	padding: 0;
@@ -18,6 +30,8 @@
 	--color-skyblue: #90C2E7;
 	--color-ink: #18222F;
 	--color-ink-muted: #334155;
+	/* Link già visitati: tinta e luminosità diverse dall'inchiostro (viola), contrasto 5,6:1 su mint */
+	--color-visited: #7332A8;
 	--badge-verificato-bg: #dcfce7;
 	--badge-verificato-txt: #136c34;
 	--badge-attesa-bg: #fef3c7;
@@ -34,7 +48,7 @@
 	padding: 0;
 	margin: -1px;
 	overflow: hidden;
-	clip: rect(0, 0, 0, 0);
+	clip-path: inset(50%);
 	white-space: nowrap;
 	border: 0;
 }
@@ -65,7 +79,7 @@
 html {
 	background-color: var(--color-snow);
 	color: var(--color-ink);
-	font-family: "Lexend", Verdana, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+	font-family: "Lexend", Verdana, "Segoe UI", Arial, sans-serif;
 	font-size: 100%;
 	line-height: 1.5;
 	text-align: left;
@@ -75,6 +89,7 @@ body {
 	display: flex;
 	flex-direction: column;
 	min-height: 100vh;
+	min-height: 100dvh;
 }
 
 /* Focus visibile e ad alto contrasto (WCAG 2.2) */
@@ -91,6 +106,31 @@ a:focus, button:focus, input:focus, select:focus, textarea:focus {
 #barraPercorso a:focus {
 	outline: 3px solid var(--color-crimson);
 	outline-offset: 2px;
+}
+
+/* ==========================================================================
+   TESTI DEI CONTENUTI
+   Il reset globale azzera margini e padding: qui si ripristinano per i testi
+   correnti (pagine di dettaglio, Chi siamo...). Le liste di testo (es. il
+   "Debrief" a elenco puntato) si marcano con class="elenco"; le liste di
+   navigazione e i componenti hanno invece i propri stili.
+   ========================================================================== */
+main p {
+	max-width: 65ch;
+}
+
+main p + p,
+main p + .elenco,
+main .elenco + p {
+	margin-top: 1em;
+}
+
+.elenco {
+	padding-left: 1.5em;
+}
+
+.elenco li + li {
+	margin-top: 0.35em;
 }
 
 /* ==========================================================================
@@ -113,7 +153,8 @@ a:focus, button:focus, input:focus, select:focus, textarea:focus {
 	gap: 0.8em;
 }
 
-#brand #logo-link {
+/* Il logo è un <div> in home e un <a> nelle altre pagine (stesso id) */
+#brand #logo {
 	text-decoration: none;
 	color: var(--color-snow);
 	display: flex;
@@ -125,13 +166,12 @@ a:focus, button:focus, input:focus, select:focus, textarea:focus {
 #logo-title {
 	font-size: 2em;
 	font-weight: 800;
-	letter-spacing: -0.03em;
 	color: var(--color-snow);
 	line-height: 1.1;
 }
 
 #slogan-ven {
-	font-size: 0.8em;
+	font-size: 0.875rem;
 	letter-spacing: 0.06em;
 	color: var(--color-mint);
 	margin-top: 0.15em;
@@ -234,13 +274,43 @@ a:focus, button:focus, input:focus, select:focus, textarea:focus {
 	justify-content: space-between;
 	align-items: center;
 	gap: 0.5em;
-	font-size: 0.85em;
+	font-size: 0.875rem;
+}
+
+/* Breadcrumb: "Ti trovi in:" + lista ordinata, separatori disegnati in CSS */
+#breadcrumb {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 0 0.5em;
+}
+
+#breadcrumb ol {
+	list-style: none;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+}
+
+#breadcrumb li + li::before {
+	content: "";
+	display: inline-block;
+	width: 0.4em;
+	height: 0.4em;
+	margin: 0 0.7em 0.1em 0.4em;
+	border-top: 2px solid currentColor;
+	border-right: 2px solid currentColor;
+	transform: rotate(45deg);
 }
 
 #breadcrumb a {
 	color: var(--color-crimson-dark);
 	font-weight: bold;
 	text-decoration: underline;
+}
+
+#breadcrumb [aria-current="page"] {
+	font-weight: 700;
 }
 
 #slogan {
@@ -275,6 +345,7 @@ a:focus, button:focus, input:focus, select:focus, textarea:focus {
 
 #hero-intro h1 {
 	font-size: 1.8em;
+	line-height: 1.3;
 	margin-bottom: 0.4em;
 	color: var(--color-crimson);
 }
@@ -344,7 +415,7 @@ a:focus, button:focus, input:focus, select:focus, textarea:focus {
 }
 
 .jump-label {
-	font-size: 0.88em;
+	font-size: 0.9rem;
 	font-weight: 700;
 	color: var(--color-ink);
 }
@@ -365,7 +436,7 @@ a:focus, button:focus, input:focus, select:focus, textarea:focus {
 	color: var(--color-ink);
 	border: 1px solid var(--color-steelblue);
 	border-radius: var(--radius-sm);
-	font-size: 0.86em;
+	font-size: 0.9rem;
 	font-weight: 600;
 	text-decoration: underline;
 }
@@ -382,6 +453,7 @@ a:focus, button:focus, input:focus, select:focus, textarea:focus {
 
 .section-header h2 {
 	font-size: 1.45em;
+	line-height: 1.3;
 	color: var(--color-crimson);
 	margin-bottom: 0.2em;
 }
@@ -394,11 +466,14 @@ a:focus, button:focus, input:focus, select:focus, textarea:focus {
 
 /* ==========================================================================
    GRIGLIA ITINERARI
+   Griglia che si adatta da sola: nessuna colonna sotto 17rem, quindi su
+   smartphone (e con zoom elevato) le card si dispongono in una sola colonna.
    ========================================================================== */
 .trips-grid {
-	display: flex;
-	flex-direction: column;
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(min(100%, 17rem), 1fr));
 	gap: 1.2em;
+	align-items: stretch;
 }
 
 .trip-card {
@@ -413,17 +488,16 @@ a:focus, button:focus, input:focus, select:focus, textarea:focus {
 
 .trip-card-top {
 	display: flex;
+	flex-wrap: wrap;
 	justify-content: space-between;
 	align-items: center;
 	gap: 0.5em;
 }
 
 .trip-destination {
-	font-size: 0.85em;
+	font-size: 0.875rem;
 	font-weight: bold;
 	color: var(--color-crimson-dark);
-	text-transform: uppercase;
-	letter-spacing: 0.04em;
 }
 
 .trip-card h3 {
@@ -437,7 +511,7 @@ a:focus, button:focus, input:focus, select:focus, textarea:focus {
 }
 
 .trip-card h3 a:visited {
-	color: var(--color-steelblue-dark);
+	color: var(--color-visited);
 }
 
 .trip-card h3 a:hover {
@@ -446,7 +520,7 @@ a:focus, button:focus, input:focus, select:focus, textarea:focus {
 
 .trip-specs {
 	display: grid;
-	grid-template-columns: repeat(2, 1fr);
+	grid-template-columns: repeat(2, minmax(0, 1fr));
 	gap: 0.6em;
 	background-color: var(--color-snow);
 	padding: 0.8em;
@@ -455,8 +529,7 @@ a:focus, button:focus, input:focus, select:focus, textarea:focus {
 }
 
 .spec-item dt {
-	font-size: 0.72em;
-	text-transform: uppercase;
+	font-size: 0.875rem;
 	color: var(--color-ink-muted);
 	font-weight: 700;
 }
@@ -465,10 +538,12 @@ a:focus, button:focus, input:focus, select:focus, textarea:focus {
 	font-size: 0.95em;
 	font-weight: 800;
 	color: var(--color-crimson);
+	overflow-wrap: break-word;
 }
 
+/* Percorso: elenco numerato delle tappe (ordine = ordine del viaggio) */
 .trip-route {
-	font-size: 0.88em;
+	font-size: 0.9rem;
 	background-color: rgba(144, 194, 231, 0.35);
 	border-left: 3px solid var(--color-steelblue);
 	padding: 0.55em 0.75em;
@@ -477,19 +552,39 @@ a:focus, button:focus, input:focus, select:focus, textarea:focus {
 	max-width: 65ch;
 }
 
+.trip-route-title {
+	font-weight: 700;
+	margin-bottom: 0.25em;
+}
+
+.trip-stops {
+	padding-left: 1.4em;
+}
+
+.trip-stops li + li {
+	margin-top: 0.2em;
+}
+
 .trip-card-footer {
 	margin-top: auto;
 	display: flex;
+	flex-wrap: wrap;
 	justify-content: space-between;
 	align-items: center;
 	gap: 0.5em;
 	padding-top: 0.7em;
 	border-top: 1px solid var(--color-steelblue);
-	font-size: 0.84em;
+	font-size: 0.875rem;
 }
 
 .trip-meta {
+	display: flex;
+	flex-direction: column;
 	color: var(--color-ink-muted);
+}
+
+.trip-author {
+	font-weight: 700;
 }
 
 .trip-link {
@@ -503,43 +598,78 @@ a:focus, button:focus, input:focus, select:focus, textarea:focus {
 	white-space: nowrap;
 }
 
+/* Freccia "vai" disegnata in CSS (nessun carattere letto dallo screen reader) */
+.trip-link::after {
+	content: "";
+	display: inline-block;
+	width: 0.45em;
+	height: 0.45em;
+	margin-left: 0.5em;
+	border-top: 2px solid currentColor;
+	border-right: 2px solid currentColor;
+	transform: rotate(45deg);
+}
+
 .trip-link:visited {
-	color: var(--color-steelblue-dark);
+	color: var(--color-visited);
 }
 
 .trip-link:hover {
 	color: var(--color-ink);
 }
 
+/* Badge di stato: colore + testo + icona (WCAG 1.4.1), icone disegnate in CSS */
+.badge-verificato,
+.badge-attesa {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.35em;
+	padding: 0.2em 0.6em;
+	border-radius: var(--radius-sm);
+	font-weight: bold;
+	font-size: 0.875rem;
+	white-space: nowrap;
+}
+
+.badge-verificato::before,
+.badge-attesa::before {
+	content: "";
+	flex: none;
+	width: 1em;
+	height: 1em;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: contain;
+}
+
 .badge-verificato {
 	background-color: var(--badge-verificato-bg);
 	color: var(--badge-verificato-txt);
 	border: 1px solid var(--badge-verificato-txt);
-	padding: 0.2em 0.6em;
-	border-radius: var(--radius-sm);
-	font-weight: bold;
-	font-size: 0.75em;
-	white-space: nowrap;
 }
 
+.badge-verificato::before {
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3 8.5l3.2 3.2L13 4.8' fill='none' stroke='%23136c34' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+}
+
+/* "In attesa": non compare in home, ma serve in "I miei viaggi" e nel pannello admin */
 .badge-attesa {
 	background-color: var(--badge-attesa-bg);
 	color: var(--badge-attesa-txt);
 	border: 1px solid var(--badge-attesa-txt);
-	padding: 0.2em 0.6em;
-	border-radius: var(--radius-sm);
-	font-weight: bold;
-	font-size: 0.75em;
-	white-space: nowrap;
+}
+
+.badge-attesa::before {
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ccircle cx='8' cy='8' r='6.2' fill='none' stroke='%2392400e' stroke-width='1.8'/%3E%3Cpath d='M8 4.6V8l2.4 1.6' fill='none' stroke='%2392400e' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
 }
 
 /* ==========================================================================
    SEZIONI CHI SIAMO & PROFILI UTENZA (riutilizzabili in chiSiamo.html)
    ========================================================================== */
 .profiles-grid {
-	display: flex;
-	flex-direction: column;
-	gap: 1em;
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(min(100%, 17rem), 1fr));
+	gap: 1.2em;
 }
 
 .profile-card {
@@ -569,7 +699,7 @@ blockquote {
 	border-right: 1px solid var(--color-steelblue);
 	border-bottom: 1px solid var(--color-steelblue);
 	padding: 1.1em 1.3em;
-	font-style: italic;
+	font-style: normal;
 	border-radius: 0 var(--radius-md) var(--radius-md) 0;
 }
 
@@ -605,9 +735,21 @@ blockquote cite {
 	color: var(--color-ink);
 	border: 1px solid var(--color-steelblue);
 	border-radius: var(--radius-sm);
-	font-size: 0.9em;
+	font-size: 0.9rem;
 	font-weight: 700;
 	text-decoration: underline;
+}
+
+/* Freccia verso l'alto disegnata in CSS */
+.back-to-top::after {
+	content: "";
+	display: inline-block;
+	width: 0.45em;
+	height: 0.45em;
+	margin: 0.25em 0 0 0.5em;
+	border-top: 2px solid currentColor;
+	border-right: 2px solid currentColor;
+	transform: rotate(-45deg);
 }
 
 .back-to-top:hover {
@@ -631,7 +773,7 @@ footer {
 	align-items: center;
 	gap: 1em;
 	text-align: center;
-	font-size: 0.85em;
+	font-size: 0.875rem;
 }
 
 .imgValidCode {
@@ -641,27 +783,15 @@ footer {
 
 /* ==========================================================================
    RESPONSIVE / TABLET & DESKTOP
+   (breakpoint in em: seguono la dimensione del testo scelta dall'utente)
    ========================================================================== */
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 48em) {
 	#container {
 		padding: 2em;
 	}
 
 	#hero-intro {
 		padding: 2em;
-	}
-
-	.trips-grid {
-		display: grid;
-		grid-template-columns: repeat(3, 1fr);
-		gap: 1.3em;
-		align-items: stretch;
-	}
-
-	.profiles-grid {
-		display: grid;
-		grid-template-columns: repeat(3, 1fr);
-		gap: 1.2em;
 	}
 
 	.footer-content {
@@ -672,7 +802,7 @@ footer {
 	}
 }
 
-@media screen and (min-width: 960px) {
+@media screen and (min-width: 60em) {
 	.navbar-container {
 		flex-wrap: nowrap;
 		padding: 0.9em 2em;
@@ -682,11 +812,16 @@ footer {
 		font-size: 2.3em;
 	}
 
+	/* Su desktop il menu è sempre aperto: la checkbox e il suo pulsante spariscono
+	   (display: none li toglie anche dall'ordine di tabulazione). */
+	#menu-toggle,
 	#bottoneMenu {
 		display: none;
 	}
 
-	#menu #menu-lista {
+	/* Selettore volutamente più specifico di "#menu-toggle:checked ~ #menu-lista",
+	   così il menu resta in riga anche se era aperto prima di allargare la finestra. */
+	#menu #menu-toggle ~ #menu-lista {
 		display: flex;
 		flex-direction: row;
 		align-items: center;

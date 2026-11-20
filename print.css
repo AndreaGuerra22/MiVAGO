@@ -1,6 +1,12 @@
 /* ==========================================================================
    MiVAGO - Foglio di Stile per la Stampa (print.css)
+   Nero su bianco e senza sfondi: massima leggibilità e risparmio di toner.
+   (Per lo schermo si evita il nero puro #000000, vedi style.css.)
    ========================================================================== */
+
+@page {
+	margin: 2cm;
+}
 
 @media print {
 	* {
@@ -16,7 +22,14 @@
 		line-height: 1.45;
 	}
 
-	#menu, #bottoneMenu, .skip-links, footer img, .nav-auth, .hero-actions, .category-jump, .back-to-top-wrapper {
+	/* Elementi inutili su carta. .sr-only va nascosta qui perché la sua
+	   definizione sta in style.css, che è caricato solo per lo schermo. */
+	#menu, .skip-links, footer img, .hero-actions, .category-jump, .back-to-top-wrapper, .trip-link, .sr-only {
+		display: none !important;
+	}
+
+	/* Icone decorative disegnate in CSS */
+	.badge-verificato::before, .badge-attesa::before {
 		display: none !important;
 	}
 
@@ -39,6 +52,7 @@
 
 	.trip-card, #hero-intro, .profile-card, blockquote {
 		border: 1pt solid #000000;
+		break-inside: avoid;
 		page-break-inside: avoid;
 		padding: 0.5cm;
 		margin-bottom: 0.7cm;
@@ -56,7 +70,65 @@
 		margin: 0.3cm 0;
 	}
 
-	a[href]:after {
+	.trip-specs dd {
+		margin: 0;
+	}
+
+	.trip-route {
+		margin: 0.3cm 0;
+	}
+
+	.trip-card-top {
+		display: flex;
+		justify-content: space-between;
+		gap: 0.3cm;
+	}
+
+	/* Lo stato resta leggibile anche senza colori e icone */
+	.badge-verificato, .badge-attesa {
+		border: 1pt solid #000000;
+		padding: 0 0.2cm;
+	}
+
+	/* Breadcrumb: su carta mancano gli stili dello schermo, li rifacciamo in sintesi */
+	#breadcrumb {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0 0.3cm;
+	}
+
+	#breadcrumb ol {
+		display: flex;
+		list-style: none;
+		padding: 0;
+	}
+
+	#breadcrumb li + li:before {
+		content: "/";
+		margin: 0 0.2cm;
+	}
+
+	/* Il grassetto di titoli, etichette e badge va ridichiarato per la stampa */
+	#breadcrumb [aria-current="page"], .trip-author, .trip-route-title,
+	.spec-item dt, .badge-verificato, .badge-attesa {
+		font-weight: bold;
+	}
+
+	/* Un titolo non resta mai da solo in fondo a una pagina. */
+	.section-header, h1, h2, h3 {
+		break-after: avoid;
+		page-break-after: avoid;
+	}
+
+	/* La prima sezione (3 card) parte su una pagina nuova, così titolo e card non si separano. */
+	#itinerari-evidenza {
+		break-before: page;
+		page-break-before: always;
+	}
+
+	/* Stampa l'indirizzo solo dei link esterni: quelli interni (#ancora o
+	   percorsi relativi come itinerari.php?id=102) su carta non servono. */
+	a[href^="http"]:after {
 		content: " (" attr(href) ")";
 		font-size: 90%;
 	}

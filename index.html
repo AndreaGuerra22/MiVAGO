@@ -2,33 +2,33 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="it" xml:lang="it">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>MiVago</title>
-    
-    <meta name="description" content="Piattaforma community-driven per condividere itinerari di viaggio strutturati, tappe, alloggi e consigli pratici verificati." />
-    <meta name="keywords" content="MiVago, itinerari viaggio, tappe, diari di viaggio, viaggi al mare, viaggi culturali, esperienze di coppia, viaggi economici" />
+    <title>MiVago - Itinerari di viaggio condivisi dai viaggiatori</title>
+
+    <meta name="description" content="MiVago è la piattaforma per condividere e consultare itinerari di viaggio divisi in tappe, con budget, voti agli alloggi e consigli pratici verificati." />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
+
     <link rel="stylesheet" type="text/css" href="mobile.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="print.css" media="print" />
-    
+
     <link rel="icon" type="image/png" href="materiale/images/mivago-icon.png" />
 </head>
 <body>
 
-    <!-- Aiuti alla navigazione per Screen Reader e Tastiera -->
+    <!-- Aiuto alla navigazione per Screen Reader e Tastiera -->
     <div class="skip-links">
         <a href="#main-content">Salta al contenuto principale</a>
-        <a href="#menu-lista">Salta alla navigazione</a>
     </div>
 
     <!-- Header con Top Nav-Bar -->
     <header id="header-wrapper">
         <div class="navbar-container">
             <div id="brand">
-                <a href="index.html" id="logo-link">
+                <!-- In home il logo NON è un link (niente link circolari).
+                     Nelle altre pagine: <a href="index.html" id="logo"> ... </a> -->
+                <div id="logo">
                     <span id="logo-title">MiVago</span>
-                    <span id="slogan-ven" lang="vec"><em>&ldquo;Tu vien? Mi vago&rdquo;</em></span>
-                </a>
+                    <span id="slogan-ven" lang="vec">&ldquo;Tu vien? Mi vago&rdquo;</span>
+                </div>
             </div>
 
             <nav id="menu" aria-label="Navigazione principale">
@@ -48,8 +48,12 @@
         <div id="barraPercorso">
             <div class="subbar-container">
                 <nav id="breadcrumb" aria-label="Percorso di navigazione">
-                    <p>Ti trovi in: <strong aria-current="page">Home</strong></p>
+                    <p class="breadcrumb-label">Ti trovi in:</p>
+                    <ol>
+                        <li><span aria-current="page">Home</span></li>
+                    </ol>
                 </nav>
+                <!-- Traduzione italiana dello slogan in veneto (accessibile a tutti) -->
                 <p id="slogan">Tu vieni? Io vado</p>
             </div>
         </div>
@@ -58,12 +62,12 @@
     <!-- Contenitore Layout Principale -->
     <div id="container">
         <main id="main-content" tabindex="-1">
-            
+
             <!-- Sezione Introduttiva -->
             <section id="hero-intro">
-                <h1>Benvenuti su MiVago</h1>
-                <p><strong>MiVago</strong> &egrave; la piattaforma <span lang="en">community-driven</span> dove i viaggiatori raccontano e consultano itinerari reali suddivisi in tappe geografiche, completi di budget dettagliato, valutazione degli alloggi e consigli pratici verificati dalla redazione.</p>
-                
+                <h1>Itinerari di viaggio, raccontati tappa per tappa</h1>
+                <p>MiVago è la piattaforma <span lang="en">community-driven</span> dove i viaggiatori raccontano e consultano itinerari suddivisi in tappe geografiche, completi di budget dettagliato, valutazione degli alloggi e consigli pratici verificati dalla redazione.</p>
+
                 <div class="hero-actions">
                     <a href="itinerari.php" class="btn-primary">Esplora tutti gli itinerari</a>
                     <a href="login.php" class="btn-secondary">Accedi per pubblicare il tuo diario</a>
@@ -82,30 +86,29 @@
                 </nav>
             </section>
 
-            <!-- Sezione 1: Ultimi Itinerari della Community -->
+            <!-- Sezione 1: Ultimi Itinerari della Community (in home solo itinerari Verificati) -->
             <section id="itinerari-evidenza" aria-labelledby="titolo-itinerari">
                 <div class="section-header">
                     <h2 id="titolo-itinerari">Ultimi Itinerari della Community</h2>
-                    <p>Diari di viaggio reali organizzati per tappe, costi e stile di esplorazione.</p>
+                    <p>Diari di viaggio organizzati per tappe, costi e stile di esplorazione. Il badge Verificato indica un itinerario revisionato dal team editoriale.</p>
                 </div>
 
                 <div class="trips-grid">
-                    
                     <article class="trip-card">
                         <div class="trip-card-top">
                             <span class="trip-destination">Asia &mdash; Giappone</span>
-                            <span class="badge-verificato"><span aria-hidden="true">&#10004; </span><abbr title="Revisionato dal team editoriale">Verificato</abbr></span>
+                            <span class="badge-verificato">Verificato</span>
                         </div>
 
-                        <h3><a href="itinerari.php?id=102">Giappone tra tradizione e futuro: da <span lang="ja">Tokyo</span> a <span lang="ja">Osaka</span></a></h3>
+                        <h3><a href="itinerari.php?id=102">Giappone tra tradizione e futuro: da <span lang="ja-Latn">Tokyo</span> a <span lang="ja-Latn">Osaka</span></a></h3>
 
                         <dl class="trip-specs">
                             <div class="spec-item">
                                 <dt>Durata</dt>
-                                <dd>14 <abbr title="giorni">gg</abbr></dd>
+                                <dd>14 giorni</dd>
                             </div>
                             <div class="spec-item">
-                                <dt>Budget / pers.</dt>
+                                <dt>Budget a persona</dt>
                                 <dd>2400 &euro;</dd>
                             </div>
                             <div class="spec-item">
@@ -118,18 +121,28 @@
                             </div>
                         </dl>
 
-                        <p class="trip-route"><strong>Percorso:</strong> <span lang="ja">Tokyo</span> (gg 1&ndash;5) &rarr; <span lang="ja">Kyoto</span> e <span lang="ja">Nara</span> (gg 6&ndash;10) &rarr; <span lang="ja">Osaka</span> e <span lang="ja">Hiroshima</span> (gg 11&ndash;14).</p>
+                        <div class="trip-route">
+                            <p class="trip-route-title">Percorso</p>
+                            <ol class="trip-stops">
+                                <li><span lang="ja-Latn">Tokyo</span> (giorni 1&ndash;5)</li>
+                                <li><span lang="ja-Latn">Kyoto</span> e <span lang="ja-Latn">Nara</span> (giorni 6&ndash;10)</li>
+                                <li><span lang="ja-Latn">Osaka</span> e <span lang="ja-Latn">Hiroshima</span> (giorni 11&ndash;14)</li>
+                            </ol>
+                        </div>
 
                         <div class="trip-card-footer">
-                            <span class="trip-meta">Di <strong>Alessandro A.</strong> &bull; <time datetime="2026-11-02">02/11/2026</time></span>
-                            <a href="itinerari.php?id=102" class="trip-link">Leggi tappe &rarr;</a>
+                            <p class="trip-meta">
+                                <span class="trip-author">Di Alessandro A.</span>
+                                <time datetime="2026-11-02">02/11/2026</time>
+                            </p>
+                            <a href="itinerari.php?id=102" class="trip-link">Leggi tappe<span class="sr-only"> di Giappone tra tradizione e futuro: da <span lang="ja-Latn">Tokyo</span> a <span lang="ja-Latn">Osaka</span></span></a>
                         </div>
                     </article>
 
                     <article class="trip-card">
                         <div class="trip-card-top">
                             <span class="trip-destination">Europa &mdash; Francia</span>
-                            <span class="badge-verificato"><span aria-hidden="true">&#10004; </span><abbr title="Revisionato dal team editoriale">Verificato</abbr></span>
+                            <span class="badge-verificato">Verificato</span>
                         </div>
 
                         <h3><a href="itinerari.php?id=101"><span lang="en">Weekend</span> lungo a Parigi tra musei e quartieri storici</a></h3>
@@ -137,10 +150,10 @@
                         <dl class="trip-specs">
                             <div class="spec-item">
                                 <dt>Durata</dt>
-                                <dd>4 <abbr title="giorni">gg</abbr></dd>
+                                <dd>4 giorni</dd>
                             </div>
                             <div class="spec-item">
-                                <dt>Budget / pers.</dt>
+                                <dt>Budget a persona</dt>
                                 <dd>580 &euro;</dd>
                             </div>
                             <div class="spec-item">
@@ -153,18 +166,29 @@
                             </div>
                         </dl>
 
-                        <p class="trip-route"><strong>Percorso:</strong> <span lang="fr">Le Marais</span> &rarr; <span lang="fr">Louvre</span> e <span lang="fr">Tuileries</span> &rarr; <span lang="fr">Montmartre</span> &rarr; <span lang="fr">Versailles</span>.</p>
+                        <div class="trip-route">
+                            <p class="trip-route-title">Percorso</p>
+                            <ol class="trip-stops">
+                                <li><span lang="fr">Le Marais</span></li>
+                                <li><span lang="fr">Louvre</span> e <span lang="fr">Tuileries</span></li>
+                                <li><span lang="fr">Montmartre</span></li>
+                                <li><span lang="fr">Versailles</span></li>
+                            </ol>
+                        </div>
 
                         <div class="trip-card-footer">
-                            <span class="trip-meta">Di <strong>Chiara B.</strong> &bull; <time datetime="2026-10-28">28/10/2026</time></span>
-                            <a href="itinerari.php?id=101" class="trip-link">Leggi tappe &rarr;</a>
+                            <p class="trip-meta">
+                                <span class="trip-author">Di Chiara B.</span>
+                                <time datetime="2026-10-28">28/10/2026</time>
+                            </p>
+                            <a href="itinerari.php?id=101" class="trip-link">Leggi tappe<span class="sr-only"> di <span lang="en">Weekend</span> lungo a Parigi tra musei e quartieri storici</span></a>
                         </div>
                     </article>
 
                     <article class="trip-card">
                         <div class="trip-card-top">
                             <span class="trip-destination">Europa &mdash; Balcani</span>
-                            <span class="badge-attesa"><span aria-hidden="true">&#9203; </span><abbr title="In attesa di verifica editoriale">In attesa</abbr></span>
+                            <span class="badge-verificato">Verificato</span>
                         </div>
 
                         <h3><a href="itinerari.php?id=99"><span lang="en">Interrail</span> nei Balcani: da Lubiana a Cattaro</a></h3>
@@ -172,10 +196,10 @@
                         <dl class="trip-specs">
                             <div class="spec-item">
                                 <dt>Durata</dt>
-                                <dd>10 <abbr title="giorni">gg</abbr></dd>
+                                <dd>10 giorni</dd>
                             </div>
                             <div class="spec-item">
-                                <dt>Budget / pers.</dt>
+                                <dt>Budget a persona</dt>
                                 <dd>720 &euro;</dd>
                             </div>
                             <div class="spec-item">
@@ -188,14 +212,24 @@
                             </div>
                         </dl>
 
-                        <p class="trip-route"><strong>Percorso:</strong> Lubiana &rarr; Zagabria &rarr; Mostar e Sarajevo &rarr; Bocche di Cattaro.</p>
+                        <div class="trip-route">
+                            <p class="trip-route-title">Percorso</p>
+                            <ol class="trip-stops">
+                                <li>Lubiana</li>
+                                <li>Zagabria</li>
+                                <li>Mostar e Sarajevo</li>
+                                <li>Bocche di Cattaro</li>
+                            </ol>
+                        </div>
 
                         <div class="trip-card-footer">
-                            <span class="trip-meta">Di <strong>Luca M.</strong> &bull; <time datetime="2026-10-15">15/10/2026</time></span>
-                            <a href="itinerari.php?id=99" class="trip-link">Leggi tappe &rarr;</a>
+                            <p class="trip-meta">
+                                <span class="trip-author">Di Luca M.</span>
+                                <time datetime="2026-10-15">15/10/2026</time>
+                            </p>
+                            <a href="itinerari.php?id=99" class="trip-link">Leggi tappe<span class="sr-only"> di <span lang="en">Interrail</span> nei Balcani: da Lubiana a Cattaro</span></a>
                         </div>
                     </article>
-
                 </div>
             </section>
 
@@ -210,7 +244,7 @@
                     <article class="trip-card">
                         <div class="trip-card-top">
                             <span class="trip-destination">Europa &mdash; Italia</span>
-                            <span class="badge-verificato"><span aria-hidden="true">&#10004; </span><abbr title="Revisionato dal team editoriale">Verificato</abbr></span>
+                            <span class="badge-verificato">Verificato</span>
                         </div>
 
                         <h3><a href="itinerari.php?id=105">Golfo di Orosei e Sardegna orientale: da Olbia a Cala Gonone</a></h3>
@@ -218,10 +252,10 @@
                         <dl class="trip-specs">
                             <div class="spec-item">
                                 <dt>Durata</dt>
-                                <dd>6 <abbr title="giorni">gg</abbr></dd>
+                                <dd>6 giorni</dd>
                             </div>
                             <div class="spec-item">
-                                <dt>Budget / pers.</dt>
+                                <dt>Budget a persona</dt>
                                 <dd>690 &euro;</dd>
                             </div>
                             <div class="spec-item">
@@ -234,11 +268,21 @@
                             </div>
                         </dl>
 
-                        <p class="trip-route"><strong>Percorso:</strong> Olbia e Tavolara &rarr; San Teodoro &rarr; Cala Gonone e Cala Luna.</p>
+                        <div class="trip-route">
+                            <p class="trip-route-title">Percorso</p>
+                            <ol class="trip-stops">
+                                <li>Olbia e Tavolara</li>
+                                <li>San Teodoro</li>
+                                <li>Cala Gonone e Cala Luna</li>
+                            </ol>
+                        </div>
 
                         <div class="trip-card-footer">
-                            <span class="trip-meta">Di <strong>Elena R.</strong> &bull; <time datetime="2026-09-14">14/09/2026</time></span>
-                            <a href="itinerari.php?id=105" class="trip-link">Leggi tappe &rarr;</a>
+                            <p class="trip-meta">
+                                <span class="trip-author">Di Elena R.</span>
+                                <time datetime="2026-09-14">14/09/2026</time>
+                            </p>
+                            <a href="itinerari.php?id=105" class="trip-link">Leggi tappe<span class="sr-only"> di Golfo di Orosei e Sardegna orientale: da Olbia a Cala Gonone</span></a>
                         </div>
                     </article>
                 </div>
@@ -255,7 +299,7 @@
                     <article class="trip-card">
                         <div class="trip-card-top">
                             <span class="trip-destination">Europa &mdash; Italia</span>
-                            <span class="badge-verificato"><span aria-hidden="true">&#10004; </span><abbr title="Revisionato dal team editoriale">Verificato</abbr></span>
+                            <span class="badge-verificato">Verificato</span>
                         </div>
 
                         <h3><a href="itinerari.php?id=108">Firenze e i borghi del Chianti tra musei e Rinascimento</a></h3>
@@ -263,10 +307,10 @@
                         <dl class="trip-specs">
                             <div class="spec-item">
                                 <dt>Durata</dt>
-                                <dd>4 <abbr title="giorni">gg</abbr></dd>
+                                <dd>4 giorni</dd>
                             </div>
                             <div class="spec-item">
-                                <dt>Budget / pers.</dt>
+                                <dt>Budget a persona</dt>
                                 <dd>480 &euro;</dd>
                             </div>
                             <div class="spec-item">
@@ -279,11 +323,21 @@
                             </div>
                         </dl>
 
-                        <p class="trip-route"><strong>Percorso:</strong> Centro storico e Uffizi &rarr; Oltrarno e Palazzo Pitti &rarr; Greve in Chianti.</p>
+                        <div class="trip-route">
+                            <p class="trip-route-title">Percorso</p>
+                            <ol class="trip-stops">
+                                <li>Centro storico e Uffizi</li>
+                                <li>Oltrarno e Palazzo Pitti</li>
+                                <li>Greve in Chianti</li>
+                            </ol>
+                        </div>
 
                         <div class="trip-card-footer">
-                            <span class="trip-meta">Di <strong>Matteo V.</strong> &bull; <time datetime="2026-10-04">04/10/2026</time></span>
-                            <a href="itinerari.php?id=108" class="trip-link">Leggi tappe &rarr;</a>
+                            <p class="trip-meta">
+                                <span class="trip-author">Di Matteo V.</span>
+                                <time datetime="2026-10-04">04/10/2026</time>
+                            </p>
+                            <a href="itinerari.php?id=108" class="trip-link">Leggi tappe<span class="sr-only"> di Firenze e i borghi del Chianti tra musei e Rinascimento</span></a>
                         </div>
                     </article>
                 </div>
@@ -300,7 +354,7 @@
                     <article class="trip-card">
                         <div class="trip-card-top">
                             <span class="trip-destination">Europa &mdash; Italia</span>
-                            <span class="badge-verificato"><span aria-hidden="true">&#10004; </span><abbr title="Revisionato dal team editoriale">Verificato</abbr></span>
+                            <span class="badge-verificato">Verificato</span>
                         </div>
 
                         <h3><a href="itinerari.php?id=112">Tramonti sulla Costiera Amalfitana: da Positano a Ravello</a></h3>
@@ -308,10 +362,10 @@
                         <dl class="trip-specs">
                             <div class="spec-item">
                                 <dt>Durata</dt>
-                                <dd>3 <abbr title="giorni">gg</abbr></dd>
+                                <dd>3 giorni</dd>
                             </div>
                             <div class="spec-item">
-                                <dt>Budget / pers.</dt>
+                                <dt>Budget a persona</dt>
                                 <dd>520 &euro;</dd>
                             </div>
                             <div class="spec-item">
@@ -324,11 +378,21 @@
                             </div>
                         </dl>
 
-                        <p class="trip-route"><strong>Percorso:</strong> Positano &rarr; Amalfi e Atrani &rarr; Villa Cimbrone a Ravello.</p>
+                        <div class="trip-route">
+                            <p class="trip-route-title">Percorso</p>
+                            <ol class="trip-stops">
+                                <li>Positano</li>
+                                <li>Amalfi e Atrani</li>
+                                <li>Villa Cimbrone a Ravello</li>
+                            </ol>
+                        </div>
 
                         <div class="trip-card-footer">
-                            <span class="trip-meta">Di <strong>Giulia P.</strong> &bull; <time datetime="2026-09-27">27/09/2026</time></span>
-                            <a href="itinerari.php?id=112" class="trip-link">Leggi tappe &rarr;</a>
+                            <p class="trip-meta">
+                                <span class="trip-author">Di Giulia P.</span>
+                                <time datetime="2026-09-27">27/09/2026</time>
+                            </p>
+                            <a href="itinerari.php?id=112" class="trip-link">Leggi tappe<span class="sr-only"> di Tramonti sulla Costiera Amalfitana: da Positano a Ravello</span></a>
                         </div>
                     </article>
                 </div>
@@ -345,7 +409,7 @@
                     <article class="trip-card">
                         <div class="trip-card-top">
                             <span class="trip-destination">Europa &mdash; Italia</span>
-                            <span class="badge-verificato"><span aria-hidden="true">&#10004; </span><abbr title="Revisionato dal team editoriale">Verificato</abbr></span>
+                            <span class="badge-verificato">Verificato</span>
                         </div>
 
                         <h3><a href="itinerari.php?id=115">Gita tra i Colli Euganei: da Monselice ad Arqu&agrave; Petrarca</a></h3>
@@ -353,10 +417,10 @@
                         <dl class="trip-specs">
                             <div class="spec-item">
                                 <dt>Durata</dt>
-                                <dd>1 <abbr title="giorno">gg</abbr></dd>
+                                <dd>1 giorno</dd>
                             </div>
                             <div class="spec-item">
-                                <dt>Budget / pers.</dt>
+                                <dt>Budget a persona</dt>
                                 <dd>35 &euro;</dd>
                             </div>
                             <div class="spec-item">
@@ -365,15 +429,25 @@
                             </div>
                             <div class="spec-item">
                                 <dt>Struttura</dt>
-                                <dd>2 tappe</dd>
+                                <dd>3 tappe</dd>
                             </div>
                         </dl>
 
-                        <p class="trip-route"><strong>Percorso:</strong> Rocca di Monselice &rarr; Sentiero del Monte Ricco &rarr; Borgo di Arqu&agrave; Petrarca.</p>
+                        <div class="trip-route">
+                            <p class="trip-route-title">Percorso</p>
+                            <ol class="trip-stops">
+                                <li>Rocca di Monselice</li>
+                                <li>Sentiero del Monte Ricco</li>
+                                <li>Borgo di Arqu&agrave; Petrarca</li>
+                            </ol>
+                        </div>
 
                         <div class="trip-card-footer">
-                            <span class="trip-meta">Di <strong>Davide S.</strong> &bull; <time datetime="2026-10-19">19/10/2026</time></span>
-                            <a href="itinerari.php?id=115" class="trip-link">Leggi tappe &rarr;</a>
+                            <p class="trip-meta">
+                                <span class="trip-author">Di Davide S.</span>
+                                <time datetime="2026-10-19">19/10/2026</time>
+                            </p>
+                            <a href="itinerari.php?id=115" class="trip-link">Leggi tappe<span class="sr-only"> di Gita tra i Colli Euganei: da Monselice ad Arqu&agrave; Petrarca</span></a>
                         </div>
                     </article>
                 </div>
@@ -381,7 +455,7 @@
 
             <!-- Collegamento rapido di ritorno a inizio pagina -->
             <div class="back-to-top-wrapper">
-                <a href="#header-wrapper" class="back-to-top">Torna su &uarr;</a>
+                <a href="#header-wrapper" class="back-to-top">Torna su</a>
             </div>
 
         </main>
@@ -391,7 +465,7 @@
         <div class="footer-content">
             <img class="imgValidCode" src="materiale/valid-html5.png" alt="HTML5 Valido e conforme XML" width="88" height="31" />
             <div class="footer-text">
-                <p>Laboratorio di Tecnologie Web 2026 &mdash; Universit&agrave; degli Studi di Padova</p> 
+                <p>Laboratorio di Tecnologie Web 2026 &mdash; Universit&agrave; degli Studi di Padova</p>
                 <p>Progetto MiVago &mdash; Tutti i diritti riservati.</p>
             </div>
             <img class="imgValidCode" src="materiale/vcss-blue.png" alt="CSS Valido secondo specifiche W3C" width="88" height="31" />
